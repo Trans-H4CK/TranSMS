@@ -142,7 +142,7 @@ public class TranSMSServ {
                 commandProcess(e);
             } else {
                 smsLogger.info("Sending to normal message processing" + e);
-                normalMessageProcess(e);
+                sendMessage(e);
             }
         }
         SetNewDate(whenInvoked);
@@ -178,7 +178,7 @@ public class TranSMSServ {
 
     private static void parseMessagesFromThread(ArrayList<Message> newMessages, Collection<SMS> messages) {
         Pattern patRegMessage = Pattern
-                .compile("(.+?):(.+)");
+                .compile("[0-9]+ (.+)");
         Pattern patCommand = Pattern
                 .compile("([a-zA-Z]+)\\s*(.*)");
 
@@ -189,14 +189,15 @@ public class TranSMSServ {
                 smsLogger.info(message.toString());
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
                 Matcher matchCommand = patCommand.matcher(message.getContent());
-                if (matchReg.find()) { //If normal message
+                if (matchReg.find()) {
+                //If normal message (prefixed with a zip)
 
-                    newMessages.add(generateResponse(message));
+                    generateResponse(message,newMessages);
                 }
                 //If command
 
                 else if (matchCommand.find()) {
-
+                    //create a response that includes a command
                     Command messageCMD;
                     try {
                         messageCMD = Command.valueOf(matchCommand.group(1).toUpperCase());
@@ -215,29 +216,11 @@ public class TranSMSServ {
         }
     }
 
-    private static Message generateResponse(SMS message, outgoing) {
+    private static Message generateResponse(SMS message,ArrayList<Message> outgoing) {
      //Make API call and build response with relevant data.
-
-
+     //TODO
 
     }
-
-
-    static private void normalMessageProcess(Message message) {
-        if (!voice.isLoggedIn()) {
-            try {
-                voice.login();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            voice.sendSMS(message.address, message.text);
-        } catch (IOException e) {
-            smsLogger.severe("Failed to send " + message);
-        }
-    }
-
 
     static private void commandProcess(Message e) {
         smsLogger.info(e.toString());
@@ -263,13 +246,29 @@ public class TranSMSServ {
                 break;
             default:
             case HELP:
-                resultText = "Welcome to Chris Beacham's SMS Listserv. txt \'COMMANDS\' for a list of commands," +
-                        " and 'LISTS' to see the current Lists.  To send a message to a list, txt with \'ListName1 ListName2 ... : YourMessage\" ";
+                resultText = "Welcome to TranSMS.  Msg a zipcode \"#####\" for categories in that area. "
+                      + "Msg a zip and category for a list of resources" ;
         }
 
         Message resultMessage = new Message(e.from.getNumber(), e.from, resultText);
-        normalMessageProcess(resultMessage);
+        sendMessage(resultMessage);
 
+    }
+
+
+    static private void sendMessage(Message message) {
+        if (!voice.isLoggedIn()) {
+            try {
+                voice.login();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            voice.sendSMS(message.address, message.text);
+        } catch (IOException e) {
+            smsLogger.severe("Failed to send " + message);
+        }
     }
 
 }

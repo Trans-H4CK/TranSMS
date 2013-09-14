@@ -66,17 +66,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TranSMSServ.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TranSMSServ.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="23" selection-start="4616" selection-end="4616" vertical-scroll-proportion="0.41770187">
+            <state line="190" column="46" selection-start="6438" selection-end="6438" vertical-scroll-proportion="-8.966666">
               <folding>
                 <element signature="docComment;class#TranSMSServ#0" expanded="false" />
                 <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
                 <element signature="e#1015#1030#0" expanded="false" />
+                <element signature="method#init_properties#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#handleMessages#0;class#TranSMSServ#0" expanded="false" />
                 <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
-                <element signature="method#normalMessageProcess#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#commandProcess#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="class#Message#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SmsListServ.log.1" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SmsListServ.log.1">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="119" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.env" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/settings.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="9" selection-start="39" selection-end="58" vertical-scroll-proportion="0.036390103">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,7 +114,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/SMSListServ.java.OLD" />
         <option value="$PROJECT_DIR$/src/GVoiceTest.java" />
-        <option value="$PROJECT_DIR$/settings.env" />
         <option value="$PROJECT_DIR$/src/SMSListerv/Util/AddrBookTest.java" />
         <option value="$PROJECT_DIR$/listServData.txt" />
         <option value="$PROJECT_DIR$/src/SMSListerv/Util/AddrBookManager.java" />
@@ -102,6 +122,7 @@
         <option value="$PROJECT_DIR$/src/SMSListServ.java" />
         <option value="$PROJECT_DIR$/src/TranSMS.java" />
         <option value="$PROJECT_DIR$/src/TranSMSServ.java" />
+        <option value="$PROJECT_DIR$/settings.env" />
       </list>
     </option>
   </component>
@@ -187,24 +208,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="SMSListServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TranSMSServ.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -307,22 +310,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="TranSMSServ" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="TranSMSServ" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="TranSMS" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="AddrBookTest" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="SMSListerv.Util.AddrBookTest" />
       <option name="VM_PARAMETERS" />
@@ -411,6 +398,22 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="false" name="TranSMSServ" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="TranSMSServ" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="TranSMS" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
     </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.GVoiceTest" />
@@ -534,11 +537,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/net/URLEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="204" column="0" selection-start="7168" selection-end="7168" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Feeshtank/BouncyBall/src/FeeshTank/FeeshContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="41" selection-start="2775" selection-end="2775" vertical-scroll-proportion="0.0" />
@@ -567,11 +565,6 @@
     <entry file="file://$PROJECT_DIR$/date.env">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="27" selection-start="57" selection-end="57" vertical-scroll-proportion="0.075987846" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/google-voice-java-1.14-java6.jar!/com/techventus/server/voice/Voice.class">
@@ -621,14 +614,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="23" selection-start="4616" selection-end="4616" vertical-scroll-proportion="0.41770187">
+        <state line="190" column="46" selection-start="6438" selection-end="6438" vertical-scroll-proportion="-8.966666">
           <folding>
             <element signature="docComment;class#TranSMSServ#0" expanded="false" />
             <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
             <element signature="e#1015#1030#0" expanded="false" />
+            <element signature="method#init_properties#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#handleMessages#0;class#TranSMSServ#0" expanded="false" />
             <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
-            <element signature="method#normalMessageProcess#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#commandProcess#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="class#Message#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmsListServ.log.1">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="119" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="9" selection-start="39" selection-end="58" vertical-scroll-proportion="0.036390103">
+          <folding />
         </state>
       </provider>
     </entry>
