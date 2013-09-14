@@ -1,0 +1,31 @@
+Family: Dad, Mom, Chris
+#individual addresses
+Chris: 7035082486
+Mom: 7035082485
+Dad: 7035689234
+Emily: 7035082169
+Valerie: 7035082167
+Family: Mom, Dad, Chris, Emily, Valerie
+Becca: 8025229594
+Sam: 7039801472
+Housemates: Chris, Sam, Becca
+Frank: 5402901690
+PJ: 9739753908
+Shed: Frank, PJ, Jill, Grace, Elle, Verdu, Mikie, Nicole, Balloon, Chris, Bernie
+Jill: 5408428709
+Grace: 5852988097
+Elle: 7032972389
+Verdu: 5408929510
+Mikie: 2398219451
+Nicole: 3016330652
+Balloon: 9049102997
+Bernie: 9788464177
+
+
+
+
+
+
+
+
+

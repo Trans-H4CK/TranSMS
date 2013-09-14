@@ -1,0 +1,201 @@
+import com.techventus.server.voice.Voice;
+import com.techventus.server.voice.datatypes.records.SMS;
+import com.techventus.server.voice.datatypes.records.SMSThread;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: Christopher
+ * Date: 4/30/13
+ * Time: 9:42 AM
+ */
+public class SMSListServ {
+
+    static String userName = "McScope";
+    static String pass = "Louieb";
+
+    public static void main(String[] arg) {
+
+        Voice voice;
+        try {
+            voice = new Voice(userName, pass);
+         //   handleMessages(voice.getRecent(), voice);
+         Collection<SMSThread> smsThreads=   voice.getSMSThreads();
+               for(SMSThread thread :smsThreads)
+               {
+                   Collection<SMS> messages= thread.getAllSMS();
+                   for(SMS message:messages)
+                   {
+                       System.out.println(message.getContent());
+                       System.out.println(message.getDateTime());
+                   }
+               }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
+    static private void handleMessages(String unformattedHTML, Voice voice) {
+        ArrayList<Message> allMessages = parseMessages(unformattedHTML);
+        for (Message e : allMessages) {
+            if (e.isCommand) {
+                commandProcess(e);
+            } else {
+                normalMessageProcess(e, voice);
+            }
+        }
+
+    }
+
+    static private ArrayList<Message> parseMessages(String unformattedHTML) {
+
+        ArrayList<Message> parsedMessages = new ArrayList<Message>();
+        String MsgDate = "";
+        String number = "";
+
+        String from = "";
+        String message = "";
+        String time = "";
+
+
+        Document doc = Jsoup.parseBodyFragment(unformattedHTML);
+        String editedMsg = doc.body().html();
+
+        // gets individual conversations
+            Pattern patThreads = Pattern
+                    .compile("message-contact(.+?)message-transcript-r");
+            Matcher match = patThreads.matcher(editedMsg);
+        // this int is simply used to label each message for further processing
+        int i = 0;
+        while (match.find()) {
+            i++;
+            Pattern pmsgdate = Pattern
+                    .compile("message-time&quot;&gt; ((?:\\d|/)+)\\s(.+?) &lt;/span");
+            Pattern pcn = Pattern
+                    .compile("message-type&quot;&gt;(.+?) - (.+?)&lt;/span");
+            Pattern prow = Pattern
+                    .compile("gc-message-sms-row&quot;&gt;(.+?)&lt;/div");
+
+            Pattern pfrom = Pattern
+                    .compile("message-sms-from&quot;&gt; (.+?): &lt;/span");
+            Pattern ptxt = Pattern
+                    .compile("message-sms-text&quot;&gt;(.+?)&lt;/span");
+            Pattern ptm = Pattern
+                    .compile("message-sms-time&quot;&gt; (.+?) &lt;/span");
+
+            Matcher mmsgdate = pmsgdate.matcher(match.group(1));
+            Matcher mcn = pcn.matcher(match.group(1));
+            Matcher mrow = prow.matcher(match.group(1));
+
+            while (mcn.find()) {   // gets contact's number and number type
+                number = mcn.group(1);
+            }
+            while (mmsgdate.find()) {   // gets contact's number and number type
+                MsgDate= mcn.group(1);
+                }
+            while (mrow.find()) {   // gets contact's number and number type
+                Matcher mfrom = pfrom.matcher(mrow.group(1));
+                Matcher mtxt = ptxt.matcher(mrow.group(1));
+                Matcher mtm = ptm.matcher(mrow.group(1));
+
+                while (mfrom.find()) {        // gets thread FROM
+                    from = mfrom.group(1);
+                }
+                while (mtxt.find()) {  // gets message
+                    message = mtxt.group(1);
+                }
+                while (mtm.find()) { // gets message time
+                    time = mtm.group(1);
+                }
+                String msg = i + "-" + from + ": " + message + " ( " + number + " "
+                         + " " + MsgDate+ time + " ) " ;
+                System.out.println(msg);
+                parsedMessages.add(new Message(from, message));
+
+            }
+            }
+            // adds message to a list and then prints them
+        return parsedMessages;
+
+    }
+
+
+
+
+    static private void normalMessageProcess(Message message, Voice v) {
+        if (!v.isLoggedIn()) {
+            try {
+                v.login();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Failed to print" + message);
+            }
+        }
+
+
+    }
+
+
+    static private void commandProcess(Message e) {
+        switch (e.command) {
+            case HELP:
+            case LIST:
+            case SUBSCRIBE:
+            case UNSUBSCRIBE:
+
+        }
+    }
+
+}
+
+class Message {
+    boolean isCommand;
+    Command command;
+    String from;
+    String text = "";
+
+    Message(String fromWhom, String intext) {
+
+        isCommand = false;
+        text = intext;
+    }
+
+    Message(Command inCommand, String fromWhom, String intext) {
+        isCommand = true;
+        command = inCommand;
+        from = fromWhom;
+        text = intext;
+
+    }
+
+    public String toString() {
+        if (isCommand) {
+            return "Command: " + command.name() + text;
+        }
+        return from + " : " + text;
+
+    }
+}
+
+enum Command {
+    HELP,         // RETURN A HELP TEXT (DEFAULT)
+    COMMANDS,     // RETURN A LIST OF ALL COMMANDS
+    LIST,         // RETURN A LIST OF ALL GROUPS
+    SUBSCRIBE,    // SUBSCRIBE (SENDER) TO GROUP X
+    UNSUBSCRIBE,  // SUBSCRIBE (SENDER) TO GROUP X
+    WHO,          // RETURN A LIST OF ALL PEOPLE IN GROUP X
+    ADD,          // ADD A NEW GROUP X
+    REMOVE,       // REMOVE A GROUP X
+    SUBOTHER,     // SUBSCRIBE ADDRESS X TO GROUP Y
+    UNSUBOTHER,   // UNSUBSCRIBE ADDRESS X FROM GROUP Y, IF SUBSCRIBED
+    CATFACT       // RETURN A RANDOM CAT FACT
+}
