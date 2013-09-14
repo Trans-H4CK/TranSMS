@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * Date: 4/30/13
  * Time: 9:42 AM
  */
-public class SMSListServ {
+public class TranSMSServ {
 
     static String userName = "McScope";
     static String pass = "Louieb";

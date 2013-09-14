@@ -5,7 +5,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-output" name="SMSListServ" />
+      <element id="module-output" name="TranSMS" />
       <element id="extracted-dir" path="$PROJECT_DIR$/json.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/jtidy.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/jsoup-1.7.2.jar" path-in-jar="/" />

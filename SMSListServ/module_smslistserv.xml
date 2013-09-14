@@ -75,10 +75,10 @@
 
     <target name="compile.module.smslistserv"
             depends="compile.module.smslistserv.production,compile.module.smslistserv.tests"
-            description="Compile module SMSListServ"/>
+            description="Compile module TranSMSServ"/>
 
     <target name="compile.module.smslistserv.production" depends="register.custom.compilers"
-            description="Compile module SMSListServ; production classes">
+            description="Compile module TranSMSServ; production classes">
         <mkdir dir="${smslistserv.output.dir}"/>
         <javac2 destdir="${smslistserv.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
                 memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.smslistserv}/javac">
@@ -99,7 +99,7 @@
 
     <target name="compile.module.smslistserv.tests"
             depends="register.custom.compilers,compile.module.smslistserv.production"
-            description="compile module SMSListServ; test classes" unless="skip.tests"/>
+            description="compile module TranSMSServ; test classes" unless="skip.tests"/>
 
     <target name="clean.module.smslistserv" description="cleanup module">
         <delete dir="${smslistserv.output.dir}"/>

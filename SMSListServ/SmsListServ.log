@@ -7,7 +7,7 @@
   <sequence>0</sequence>
   <logger>SMS Listserv</logger>
   <level>INFO</level>
-  <class>SMSListServ</class>
+  <class>TranSMSServ</class>
   <method>main</method>
   <thread>1</thread>
   <message>SMS Checks scheduled to begin on Tue May 07 00:07:58 EDT 2013</message>
@@ -18,7 +18,7 @@
   <sequence>1</sequence>
   <logger>SMS Listserv</logger>
   <level>INFO</level>
-  <class>SMSListServ</class>
+  <class>TranSMSServ</class>
   <method>handleMessages</method>
   <thread>11</thread>
   <message>HandleMessage Called</message>

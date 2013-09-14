@@ -22,16 +22,15 @@ import java.util.regex.Pattern;
  * Date: 4/30/13
  * Time: 9:42 AM
  */
-public class SMSListServ {
+public class TranSMSServ {
 
     private static String userName;
     private static String pass;
     private static Date lastCheckDate;
     static Properties defaultProps;
     static Properties dateProps;
-    static AddrBookManager myAddrManager;
 
-    private final static Logger smsLogger = Logger.getLogger("SMS Listserv");
+    private final static Logger smsLogger = Logger.getLogger("TransSMS");
     static Voice voice;
 
     public static void main(String[] arg) {
@@ -42,9 +41,8 @@ public class SMSListServ {
         if (init_properties()) return;  // returns true if init_properties failed
 
         try {
-            smsLogger.addHandler(new FileHandler("SmsListServ.log"));
-            smsLogger.info("SMS ListServ Spinning Up");
-            smsLogger.info("Loading Catfacts");
+            smsLogger.addHandler(new FileHandler("TransSMS.log"));
+            smsLogger.info("TranSMSServ server Spinning Up");
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -92,7 +90,6 @@ public class SMSListServ {
             if (defaultProps.containsKey("machineReadablePath")) {
                 machineReadablePath = defaultProps.getProperty("machineReadablePath");
             }
-            myAddrManager = new AddrBookManager(humanReadablePath, machineReadablePath);
             in.close();
         } catch (IOException e) {
             System.out.println("settings.env file not found");
@@ -243,22 +240,9 @@ public class SMSListServ {
     static private void commandProcess(Message e) {
         smsLogger.info(e.toString());
         StringBuilder sb = new StringBuilder();
-        Pattern pat1Arg = Pattern
-                .compile("(\\S+)");
-        Pattern pat2Arg = Pattern
-                .compile("(\\S+)\\s+(\\S+)");
-        Matcher match1Arg = pat1Arg.matcher(e.text);
-        Matcher match2Arg = pat2Arg.matcher(e.text);
         String resultText = "Command Succeeded:" + e.text;
-        String groupFail = "That group doesn't exist!";
         switch (e.command) {
             //0 arguments
-            case LISTS:
-                for (String key : myAddrManager.myAddrBook.keySet()) {
-                    sb.append(key).append(", ");
-                }
-                resultText = sb.toString();
-                break;
             case COMMANDS:
                 resultText ="Commands are: "+
                         "(you must specify X and Y if needed) " +
@@ -296,88 +280,8 @@ public class SMSListServ {
                 resultText = catFacts[r.nextInt(catFacts.length)];
                 break;
             //1 arguments
-
-            case REGISTER:
-                if (match1Arg.find() && !myAddrManager.myAddrBook.containsKey(match1Arg.group(1))) {
-                    ArrayList<String> toInsert = new ArrayList<String>();
-                    toInsert.add(e.from.getNumber());
-                    myAddrManager.myAddrBook.put(match1Arg.group(1), toInsert);
-                    myAddrManager.writeAddrBook();
-                } else
-                    resultText = "Please provide a unique name you wish to be registered to";
-                break;
-            case SUBSCRIBE:
-                if (match1Arg.find() && myAddrManager.myAddrBook.containsKey(match1Arg.group(1))) {
-                    String identity = myAddrManager.identify(e.from.getNumber());
-
-                    if (!identity.equals(e.from.getNumber())) {
-                        myAddrManager.myAddrBook.get(match1Arg.group(1)).add(identity);
-                        myAddrManager.writeAddrBook();
-                    } else {
-                        resultText = "You have not yet registered";
-                    }
-                } else
-                    resultText = groupFail;
-                break;
-
-            case UNSUBSCRIBE:
-                if (match1Arg.find() && myAddrManager.myAddrBook.containsKey(match1Arg.group(1))) {
-                    String identity = myAddrManager.identify(e.from.getNumber());
-
-                    if (!identity.equals(e.from.getNumber())) {
-                        myAddrManager.myAddrBook.get(match1Arg.group(1)).remove(identity);
-                    }
-                    myAddrManager.myAddrBook.get(match1Arg.group(1)).remove(e.from.getNumber());
-                    myAddrManager.writeAddrBook();
-
-                } else
-                    resultText = groupFail;
-            case ADD:
-                if (match1Arg.find() && !myAddrManager.myAddrBook.containsKey(match1Arg.group(1))) {
-                    myAddrManager.myAddrBook.put(match1Arg.group(1), new ArrayList<String>());
-                    myAddrManager.writeAddrBook();
-                } else {
-                    resultText = groupFail;
-                }
-                break;
-            case REMOVE:
-                if (match1Arg.find() && myAddrManager.myAddrBook.containsKey(match1Arg.group(1))) {
-                    {
-                        myAddrManager.myAddrBook.remove(match1Arg.group(1));
-                        myAddrManager.writeAddrBook();
-                    }
-                } else {
-                    resultText = groupFail;
-                }
-                break;
-            case WHO:
-                if (match1Arg.find() && myAddrManager.myAddrBook.containsKey(match1Arg.group(1))) {
-                    for (String finalAddr : myAddrManager.myAddrBook.get(match1Arg.group(1))) {
-                        sb.append(finalAddr).append(", ");
-                    }
-
-                    resultText = sb.toString();
-                } else {
-                    resultText = groupFail;
-                }
-
                 break;
             // 2 arguments
-            case SUBOTHER:
-                if (match2Arg.find() && myAddrManager.myAddrBook.containsKey(match2Arg.group(2))) {
-                    myAddrManager.myAddrBook.get(match2Arg.group(2)).add(match2Arg.group(1));
-                    myAddrManager.writeAddrBook();
-                } else
-                    resultText = groupFail;
-                break;
-            case UNSUBOTHER:
-                if (match2Arg.find() && myAddrManager.myAddrBook.containsKey(match2Arg.group(2))) {
-                    myAddrManager.myAddrBook.get(match2Arg.group(2)).remove(match2Arg.group(1));
-                    myAddrManager.writeAddrBook();
-                } else
-                    resultText = groupFail;
-
-                break;
             default:
             case HELP:
                 resultText = "Welcome to Chris Beacham's SMS Listserv. txt \'COMMANDS\' for a list of commands," +
@@ -424,15 +328,6 @@ class Message {
 
 enum Command {
     HELP,         // RETURN A HELP TEXT (DEFAULT)
-    LISTS,         // RETURN A LIST OF ALL GROUPS
     COMMANDS,     // RETURN A LIST OF ALL COMMANDS
     CATFACT,       // RETURN A RANDOM CAT FACT
-    REGISTER,      // REGISTERS (SENDER) TO NAME X
-    SUBSCRIBE,    // SUBSCRIBE (SENDER) TO GROUP X
-    UNSUBSCRIBE,  // SUBSCRIBE (SENDER) TO GROUP X
-    ADD,          // ADD A NEW GROUP X
-    REMOVE,       // REMOVE A GROUP X
-    WHO,          // RETURN A LIST OF ALL PEOPLE IN GROUP X
-    SUBOTHER,     // SUBSCRIBE ADDRESS X TO GROUP Y
-    UNSUBOTHER   // UNSUBSCRIBE ADDRESS X FROM GROUP Y, IF SUBSCRIBED
 }
