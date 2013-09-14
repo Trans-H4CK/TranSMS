@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-09-14T16:34:57</date>
+  <millis>1379201697827</millis>
+  <sequence>0</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>TranSMSServ server Spinning Up</message>
+</record>
+<record>
+  <date>2013-09-14T16:34:59</date>
+  <millis>1379201699094</millis>
+  <sequence>1</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>SMS Checks scheduled to begin on Sat Sep 14 16:34:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T16:35:00</date>
+  <millis>1379201700243</millis>
+  <sequence>2</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T16:35:00</date>
+  <millis>1379201700246</millis>
+  <sequence>3</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 16:34:59 PDT 2013</message>
+</record>

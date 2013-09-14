@@ -28,9 +28,15 @@ public class TranSMSServ {
     private static Date lastCheckDate;
     static Properties defaultProps;
     static Properties dateProps;
-
+    static String APIURL;
     private final static Logger smsLogger = Logger.getLogger("TransSMS");
     static Voice voice;
+    static Pattern patRegMessage = Pattern
+            .compile("([0-9]+)"
+                  + "(\\s(\\S*))?"
+                  + "(\\s([0-9]*))?");
+    static Pattern patCommand = Pattern
+            .compile("([a-zA-Z]*)\\s*(.*)");
 
     public static void main(String[] arg) {
         //todo:refactor
@@ -77,18 +83,11 @@ public class TranSMSServ {
     private static boolean init_properties() {
         defaultProps = new Properties();
         try {
-            String machineReadablePath = "";
-            String humanReadablePath = "";
             FileInputStream in = new FileInputStream("settings.env");
             defaultProps.load(in);
             if (defaultProps.containsKey("username")) userName = defaultProps.getProperty("username");
             if (defaultProps.containsKey("password")) pass = defaultProps.getProperty("password");
-            if (defaultProps.containsKey("humanReadablePath")) {
-                humanReadablePath = defaultProps.getProperty("humanReadablePath").trim();
-            }
-            if (defaultProps.containsKey("machineReadablePath")) {
-                machineReadablePath = defaultProps.getProperty("machineReadablePath");
-            }
+            if (defaultProps.containsKey("APIURL")) APIURL = defaultProps.getProperty("APIURL");
             in.close();
         } catch (IOException e) {
             System.out.println("settings.env file not found");
@@ -115,7 +114,6 @@ public class TranSMSServ {
     }
 
     static private void handleMessages() {
-        smsLogger.info("HandleMessage Called");
         Date whenInvoked=new Date(); // NOW s
         ArrayList<Message> allMessages;
         if (!voice.isLoggedIn()) {
@@ -141,7 +139,7 @@ public class TranSMSServ {
             if (e.isCommand) {
                 commandProcess(e);
             } else {
-                smsLogger.info("Sending to normal message processing" + e);
+                smsLogger.info("Sending message" + e);
                 sendMessage(e);
             }
         }
@@ -177,22 +175,17 @@ public class TranSMSServ {
     }
 
     private static void parseMessagesFromThread(ArrayList<Message> newMessages, Collection<SMS> messages) {
-        Pattern patRegMessage = Pattern
-                .compile("[0-9]+ (.+)");
-        Pattern patCommand = Pattern
-                .compile("([a-zA-Z]+)\\s*(.*)");
-
         for (SMS message : messages) {
             //check if newer than last datastamp
-            if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
+                if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
 
-                smsLogger.info(message.toString());
+                    smsLogger.info(message.toString());
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
                 Matcher matchCommand = patCommand.matcher(message.getContent());
                 if (matchReg.find()) {
                 //If normal message (prefixed with a zip)
 
-                    generateResponse(message,newMessages);
+                    generateResponse(message,newMessages,matchReg);
                 }
                 //If command
 
@@ -216,10 +209,23 @@ public class TranSMSServ {
         }
     }
 
-    private static Message generateResponse(SMS message,ArrayList<Message> outgoing) {
+    private static void generateResponse(SMS in_message,ArrayList<Message> outgoing, Matcher matchReg) {
      //Make API call and build response with relevant data.
-     //TODO
+        String requestURL = APIURL + "?";
+        if(matchReg.group(1) !=null) {
+           String zip = matchReg.group(1);
+            requestURL = requestURL + zip;
+        }
+        if(matchReg.group(3) !=null){
+            String category = matchReg.group(3);
+            requestURL = requestURL + category;
+        }
+        if(matchReg.group(5) !=null){
+            String id = matchReg.group(5);
+            requestURL = requestURL + id;
+        }
 
+     outgoing.add(new Message(in_message.getFrom().getNumber(),in_message.getFrom(), requestURL));
     }
 
     static private void commandProcess(Message e) {
@@ -247,7 +253,7 @@ public class TranSMSServ {
             default:
             case HELP:
                 resultText = "Welcome to TranSMS.  Msg a zipcode \"#####\" for categories in that area. "
-                      + "Msg a zip and category for a list of resources" ;
+                      + "Msg a zip and category for a list of trans-friendly resources" ;
         }
 
         Message resultMessage = new Message(e.from.getNumber(), e.from, resultText);
