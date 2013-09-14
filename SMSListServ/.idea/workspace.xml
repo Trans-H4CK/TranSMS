@@ -69,13 +69,12 @@
       <file leaf-file-name="TranSMSServ.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="217" column="17" selection-start="7799" selection-end="7799" vertical-scroll-proportion="0.19409938">
+            <state line="139" column="23" selection-start="4616" selection-end="4616" vertical-scroll-proportion="0.41770187">
               <folding>
                 <element signature="docComment;class#TranSMSServ#0" expanded="false" />
                 <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
-                <element signature="e#1055#1070#0" expanded="false" />
+                <element signature="e#1015#1030#0" expanded="false" />
                 <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
-                <element signature="method#parseMessages#0;class#TranSMSServ#0" expanded="false" />
                 <element signature="method#normalMessageProcess#0;class#TranSMSServ#0" expanded="false" />
               </folding>
             </state>
@@ -622,13 +621,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="17" selection-start="7799" selection-end="7799" vertical-scroll-proportion="0.19409938">
+        <state line="139" column="23" selection-start="4616" selection-end="4616" vertical-scroll-proportion="0.41770187">
           <folding>
             <element signature="docComment;class#TranSMSServ#0" expanded="false" />
             <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
-            <element signature="e#1055#1070#0" expanded="false" />
+            <element signature="e#1015#1030#0" expanded="false" />
             <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
-            <element signature="method#parseMessages#0;class#TranSMSServ#0" expanded="false" />
             <element signature="method#normalMessageProcess#0;class#TranSMSServ#0" expanded="false" />
           </folding>
         </state>

@@ -1,4 +1,3 @@
-import SMSListerv.Util.AddrBookManager;
 import com.techventus.server.voice.Voice;
 import com.techventus.server.voice.datatypes.Contact;
 import com.techventus.server.voice.datatypes.records.SMS;
@@ -191,12 +190,8 @@ public class TranSMSServ {
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
                 Matcher matchCommand = patCommand.matcher(message.getContent());
                 if (matchReg.find()) { //If normal message
-                    List<AbstractMap.SimpleEntry<String, String>> messageAddr = myAddrManager.evaluateAddresses(message.getFrom().getNumber(), matchReg.group(1));
-                    for (AbstractMap.SimpleEntry<String, String> AddrAndPath : messageAddr) {
-                        String messageText = AddrAndPath.getValue() + " : " + matchReg.group(2);
 
-                        newMessages.add(new Message(AddrAndPath.getKey(), message.getFrom(), messageText));
-                    }
+                    newMessages.add(generateResponse(message));
                 }
                 //If command
 
@@ -218,6 +213,13 @@ public class TranSMSServ {
 
             }
         }
+    }
+
+    private static Message generateResponse(SMS message, outgoing) {
+     //Make API call and build response with relevant data.
+
+
+
     }
 
 
@@ -259,29 +261,6 @@ public class TranSMSServ {
                         " SUBOTHER(adds X to list Y)\n" +
                         " UNSUBOTHER(removes X from group Y)\n";
                 break;
-            case CATFACT:
-                Random r = new Random(lastCheckDate.getTime());
-                String[] catFacts = {"Cats spend nearly 16 hours a day sleeping!",
-                        "Cat skulls are harder than lead",
-                        "The average cat will be photographed over 1000 times",
-                        "Cat DNA is 100 percent similar to Human",
-                        "Cats live amongst Humans in order to study them",
-                        "Housecats never stop growing! The largest housecat of all time grew to 136 inches long before it was discovered to be a panther",
-                        "Cats know how to use knives",
-                        "One out of every three cats is a murder cat",
-                        "Cats are unable to truely love",
-                        "If you aren't watching your cat, your cat is watching you",
-                        "If your cat is exceptionally good at climbing, you should take it to a vet. It may be a racoon",
-                        "The cat's dorsal fin is entirely vestigial",
-                        "Cats mate while standing on two legs",
-                        "A bull cat's bellow can be heard as far away as 8 miles",
-                        "Cats  live in social groups of five to several hundred. They use echolocation to find prey and often hunt together by surrounding a school of fish, trapping them and taking turns swimming through the school and catching fish. ",
-                        "Cats are technically a fungus"};
-                resultText = catFacts[r.nextInt(catFacts.length)];
-                break;
-            //1 arguments
-                break;
-            // 2 arguments
             default:
             case HELP:
                 resultText = "Welcome to Chris Beacham's SMS Listserv. txt \'COMMANDS\' for a list of commands," +
@@ -329,5 +308,4 @@ class Message {
 enum Command {
     HELP,         // RETURN A HELP TEXT (DEFAULT)
     COMMANDS,     // RETURN A LIST OF ALL COMMANDS
-    CATFACT,       // RETURN A RANDOM CAT FACT
 }
