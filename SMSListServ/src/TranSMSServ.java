@@ -234,7 +234,7 @@ public class TranSMSServ {
         if (matchReg.group(3) != null) {
             zipOnly = false;
             String category = matchReg.group(3);
-            GETargs = GETargs + "category" + "&";
+            GETargs = GETargs + "category=" + category + "&per_page=5&";
         }
         if (matchReg.group(5) != null) {
             id = Integer.parseInt(matchReg.group(5));
@@ -273,6 +273,9 @@ public class TranSMSServ {
     }
 
     private static String parseCats(JSONObject jsonResponse) {
+        //meow
+        //parses all the categories for a given zip code
+        //returns
         return jsonResponse.toString();
     }
 
@@ -280,7 +283,7 @@ public class TranSMSServ {
         try {
             JSONArray resourceList = jsonResponse.getJSONArray("resources");
             if (id != -1) { //build view for individual resource details
-                {JSONObject curResource = resourceList.getJSONObject(id);
+                JSONObject curResource = resourceList.getJSONObject(id).getJSONObject("properties");
                 StringBuilder sb = new StringBuilder();
                 sb.append(curResource.get("name"));
                 sb.append("  ");
@@ -304,13 +307,13 @@ public class TranSMSServ {
                     sb.append("  ");
                     sb.append(curResource.get("contact_name"));
                     return sb.toString();
-                }
             } else {  //view for nearby resource summary
                 StringBuilder sb = new StringBuilder();
                 for(int index=0;index<resourceList.length();index++)
                 {
-                    JSONObject curResource = resourceList.getJSONObject(index);
-                    sb.append(index);
+                    JSONObject curResource = resourceList.getJSONObject(index).getJSONObject("properties");
+
+                    sb.append(index+1);
                     sb.append(". ");
                     sb.append(curResource.get("name"));
                     sb.append("  ");
