@@ -3,6 +3,7 @@ import com.techventus.server.voice.datatypes.Contact;
 import com.techventus.server.voice.datatypes.records.SMS;
 import com.techventus.server.voice.datatypes.records.SMSThread;
 import gvjava.org.json.JSONArray;
+import gvjava.org.json.JSONException;
 import gvjava.org.json.JSONObject;
 
 import java.io.*;
@@ -272,63 +273,85 @@ public class TranSMSServ {
         outgoing.add(new Message(in_message.getFrom().getNumber(), in_message.getFrom(), responseText));
     }
 
-    private static String parseCats(JSONObject jsonResponse) {
-        //meow
-        //parses all the categories for a given zip code
-        //returns
-        return jsonResponse.toString();
+    private static String parseCats(JSONObject jsonResponse) {  //MEOW
+        //parses all the categories for a given zip code           MEOW
+        try {
+            JSONArray categorylist = jsonResponse.getJSONArray("categories");
+            StringBuilder sb = new StringBuilder();
+            sb.append("Trans resources near that zipcode:")
+            for(int index=0;index<categorylist.length();index++)
+            {
+                JSONObject curResource = categorylist.getJSONObject(index).getJSONObject("categories");
+                sb.append(index+1);
+                sb.append(". ");
+                sb.append(curResource.get("name"));
+                sb.append("\n  ");
+            }
+            return sb.toString();
+        }
+            catch (Exception e) {
+                smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
+
+                return "PARSE_ERROR ";
+            }
     }
 
     private static String parseResources(JSONObject jsonResponse, int id) {
         try {
             JSONArray resourceList = jsonResponse.getJSONArray("resources");
             if (id != -1) { //build view for individual resource details
-                JSONObject curResource = resourceList.getJSONObject(id).getJSONObject("properties");
-                StringBuilder sb = new StringBuilder();
-                sb.append(curResource.get("name"));
-                sb.append("  ");
-                sb.append(curResource.get("trans_friendliness_rating"));
-                sb.append("/5  ");
-                sb.append(curResource.get("street_address_1"));
-
-                    sb.append("  ");
-                    sb.append(curResource.get("street_address_2"));
-                    sb.append("  ");
-
-                    sb.append(curResource.get("city"));
-
-                    sb.append(",  ");
-
-                    sb.append(curResource.get("state"));
-                    sb.append("  ");
-                    sb.append(curResource.get("zip"));
-                    sb.append("  ");
-                    sb.append(curResource.get("phone"));
-                    sb.append("  ");
-                    sb.append(curResource.get("contact_name"));
-                    return sb.toString();
+                return parseResource(id, resourceList);
             } else {  //view for nearby resource summary
-                StringBuilder sb = new StringBuilder();
-                for(int index=0;index<resourceList.length();index++)
-                {
-                    JSONObject curResource = resourceList.getJSONObject(index).getJSONObject("properties");
-
-                    sb.append(index+1);
-                    sb.append(". ");
-                    sb.append(curResource.get("name"));
-                    sb.append("  ");
-                    sb.append(curResource.get("trans_friendliness_rating"));
-                    sb.append("/5  ");
-                }
-                return sb.toString();
+                return ParseResourceList(resourceList);
             }
 
         } catch (Exception e) {
             smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
-
             return "PARSE_ERROR ";
         }
 
+    }
+
+    private static String ParseResourceList(JSONArray resourceList) throws JSONException {
+        StringBuilder sb = new StringBuilder();
+        for(int index=0;index<resourceList.length();index++)
+        {
+            JSONObject curResource = resourceList.getJSONObject(index).getJSONObject("properties");
+            sb.append(index+1);
+            sb.append(". ");
+            sb.append(curResource.get("name"));
+            sb.append("  ");
+            sb.append(curResource.get("trans_friendliness_rating"));
+            sb.append("/5  ");
+            sb.append(curResource.get("distance"));
+            sb.append(" miles \n");
+        }
+        return sb.toString();
+    }
+
+    private static String parseResource(int id, JSONArray resourceList) throws JSONException {
+        JSONObject curResource = resourceList.getJSONObject(id).getJSONObject("properties");
+        StringBuilder sb = new StringBuilder();
+        sb.append(curResource.get("name"));
+        sb.append("  ");
+        sb.append(curResource.get("trans_friendliness_rating"));
+        sb.append("/5  ");
+        sb.append(curResource.get("street_address_1"));
+        sb.append("  ");
+        sb.append(curResource.get("street_address_2"));
+        sb.append("  ");
+        sb.append(curResource.get("city"));
+        sb.append(",  ");
+        sb.append(curResource.get("state"));
+        sb.append("  ");
+        sb.append(curResource.get("zip"));
+        sb.append("  ");
+        sb.append(curResource.get("distance"));
+        sb.append(" miles ");
+        sb.append(curResource.get("phone"));
+        sb.append("  ");
+        sb.append(curResource.get("contact_name"));
+        return sb.toString();
     }
 
     static private String InputStreamtoString(InputStream in) {

@@ -27,7 +27,7 @@
   </component>
   <component name="DebuggerManager">
     <method_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/TranSMSServ.java" line="222" class="TranSMSServ" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/TranSMSServ.java" line="223" class="TranSMSServ" package="">
         <option name="WATCH_ENTRY" value="true" />
         <option name="WATCH_EXIT" value="true" />
         <option name="ENABLED" value="true" />
@@ -103,13 +103,22 @@
       <file leaf-file-name="TranSMSServ.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="236" column="70" selection-start="8333" selection-end="8333" vertical-scroll-proportion="-1.0869565">
+            <state line="265" column="39" selection-start="9439" selection-end="9439" vertical-scroll-proportion="0.33707866">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2298#2427#0" expanded="true" />
-                <element signature="e#2416#2417#0" expanded="true" />
-                <element signature="e#5853#5862#0" expanded="true" />
+                <element signature="e#2336#2465#0" expanded="true" />
+                <element signature="e#2454#2455#0" expanded="true" />
+                <element signature="e#5891#5900#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="109" column="19" selection-start="3673" selection-end="3673" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,7 +135,7 @@
       <file leaf-file-name="TransSMS.log" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TransSMS.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="284" selection-start="3286" selection-end="3286" vertical-scroll-proportion="-78.333336">
+            <state line="179" column="284" selection-start="5289" selection-end="5289" vertical-scroll-proportion="-78.333336">
               <folding />
             </state>
           </provider>
@@ -135,25 +144,7 @@
       <file leaf-file-name="TransSMS.log.1" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TransSMS.log.1">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="11" selection-start="895" selection-end="895" vertical-scroll-proportion="-7.428571">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransSMS.log.2" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransSMS.log.2">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="13" selection-start="1183" selection-end="1186" vertical-scroll-proportion="-11.433333">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSONObject.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/json.jar!/gvjava/org/json/JSONObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="8" selection-start="4524" selection-end="4525" vertical-scroll-proportion="38.32143">
+            <state line="252" column="11" selection-start="8187" selection-end="8187" vertical-scroll-proportion="-7.428571">
               <folding />
             </state>
           </provider>
@@ -177,19 +168,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmsListServ.log.1" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SmsListServ.log.1">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="119" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="settings.env" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="3" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
+            <state line="6" column="44" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -214,8 +196,8 @@
         <option value="$PROJECT_DIR$/date.env" />
         <option value="$PROJECT_DIR$/src/SMSListServ.java" />
         <option value="$PROJECT_DIR$/src/TranSMS.java" />
-        <option value="$PROJECT_DIR$/settings.env" />
         <option value="$PROJECT_DIR$/TransSMS.log" />
+        <option value="$PROJECT_DIR$/settings.env" />
         <option value="$PROJECT_DIR$/src/TranSMSServ.java" />
       </list>
     </option>
@@ -601,8 +583,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286908" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23741935" sideWeight="0.776738" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1967742" sideWeight="0.61977714" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38022283" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1967742" sideWeight="0.68105847" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3189415" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29387188" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -681,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="694" column="0" selection-start="25233" selection-end="25233" vertical-scroll-proportion="0.035714287">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/humanEnteredData.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="76" selection-start="347" selection-end="347" vertical-scroll-proportion="0.15848528" />
@@ -707,30 +682,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SmsListServ.log.1">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="119" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/util/regex/Matcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="484" column="0" selection-start="16942" selection-end="16942" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/google-voice-java-1.14-java6.jar!/com/techventus/server/voice/datatypes/records/SMS.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="-1.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SmsListServ.log">
@@ -749,14 +703,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TransSMS.log.1">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="11" selection-start="895" selection-end="895" vertical-scroll-proportion="-7.428571">
+        <state line="252" column="11" selection-start="8187" selection-end="8187" vertical-scroll-proportion="-7.428571">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TransSMS.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="284" selection-start="3286" selection-end="3286" vertical-scroll-proportion="-78.333336">
+        <state line="179" column="284" selection-start="5289" selection-end="5289" vertical-scroll-proportion="-78.333336">
           <folding />
         </state>
       </provider>
@@ -768,14 +722,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SmsListServ.log.1">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="119" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.06234414">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/google-voice-java-1.14-java6.jar!/com/techventus/server/voice/datatypes/records/SMS.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="-1.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="44" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="19" selection-start="3673" selection-end="3673" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="70" selection-start="8333" selection-end="8333" vertical-scroll-proportion="-1.0869565">
+        <state line="265" column="39" selection-start="9439" selection-end="9439" vertical-scroll-proportion="0.33707866">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2298#2427#0" expanded="true" />
-            <element signature="e#2416#2417#0" expanded="true" />
-            <element signature="e#5853#5862#0" expanded="true" />
+            <element signature="e#2336#2465#0" expanded="true" />
+            <element signature="e#2454#2455#0" expanded="true" />
+            <element signature="e#5891#5900#0" expanded="true" />
           </folding>
         </state>
       </provider>

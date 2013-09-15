@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2013-09-14T20:08:50</date>
-  <millis>1379214530429</millis>
+  <date>2013-09-14T20:28:19</date>
+  <millis>1379215699685</millis>
   <sequence>0</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
@@ -13,75 +13,31 @@
   <message>TranSMSServ server Spinning Up</message>
 </record>
 <record>
-  <date>2013-09-14T20:08:55</date>
-  <millis>1379214535503</millis>
+  <date>2013-09-14T20:28:21</date>
+  <millis>1379215701417</millis>
   <sequence>1</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>main</method>
   <thread>1</thread>
-  <message>SMS Checks scheduled to begin on Sat Sep 14 20:08:58 PDT 2013</message>
+  <message>SMS Checks scheduled to begin on Sat Sep 14 20:28:58 PDT 2013</message>
 </record>
 <record>
-  <date>2013-09-14T20:09:00</date>
-  <millis>1379214540203</millis>
+  <date>2013-09-14T20:28:59</date>
+  <millis>1379215739774</millis>
   <sequence>2</sequence>
-  <logger>TransSMS</logger>
-  <level>INFO</level>
-  <class>TranSMSServ</class>
-  <method>handleMessages</method>
-  <thread>13</thread>
-  <message>0 messages recieved from GVOICE</message>
-</record>
-<record>
-  <date>2013-09-14T20:09:00</date>
-  <millis>1379214540205</millis>
-  <sequence>3</sequence>
-  <logger>TransSMS</logger>
-  <level>INFO</level>
-  <class>TranSMSServ</class>
-  <method>SetNewDate</method>
-  <thread>13</thread>
-  <message>Date set to Sat Sep 14 20:08:58 PDT 2013</message>
-</record>
-<record>
-  <date>2013-09-14T20:09:59</date>
-  <millis>1379214599257</millis>
-  <sequence>4</sequence>
-  <logger>TransSMS</logger>
-  <level>INFO</level>
-  <class>TranSMSServ</class>
-  <method>handleMessages</method>
-  <thread>13</thread>
-  <message>0 messages recieved from GVOICE</message>
-</record>
-<record>
-  <date>2013-09-14T20:09:59</date>
-  <millis>1379214599259</millis>
-  <sequence>5</sequence>
-  <logger>TransSMS</logger>
-  <level>INFO</level>
-  <class>TranSMSServ</class>
-  <method>SetNewDate</method>
-  <thread>13</thread>
-  <message>Date set to Sat Sep 14 20:09:58 PDT 2013</message>
-</record>
-<record>
-  <date>2013-09-14T20:10:59</date>
-  <millis>1379214659121</millis>
-  <sequence>6</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>parseMessagesFromThread</method>
   <thread>13</thread>
-  <message>SMS [dateTime=Sat Sep 14 20:10:00 PDT 2013, from={id=;name=Miami, FL;number=+13055052935;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=21704 test 4]</message>
+  <message>SMS [dateTime=Sat Sep 14 20:28:00 PDT 2013, from={id=;name=Baltimore, MD;number=+14436765459;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=21076 Health]</message>
 </record>
 <record>
-  <date>2013-09-14T20:11:00</date>
-  <millis>1379214660174</millis>
-  <sequence>7</sequence>
+  <date>2013-09-14T20:29:00</date>
+  <millis>1379215740508</millis>
+  <sequence>3</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
@@ -90,30 +46,79 @@
   <message>1 messages recieved from GVOICE</message>
 </record>
 <record>
-  <date>2013-09-14T20:11:00</date>
-  <millis>1379214660175</millis>
+  <date>2013-09-14T20:29:00</date>
+  <millis>1379215740509</millis>
+  <sequence>4</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Baltimore, MD;number=+14436765459;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +14436765459 message: 1. Mazzoni Center Family and Community Medicine  5/5  
+2. GLCCB  3/5  
+3. Chase Brexton Health Services  5/5  
+4. Walt Whitman Clinic  5/5  
+5. Washington West Project  5/5  
+</message>
+</record>
+<record>
+  <date>2013-09-14T20:29:01</date>
+  <millis>1379215741531</millis>
+  <sequence>5</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:28:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:30:04</date>
+  <millis>1379215804732</millis>
+  <sequence>6</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:30:04</date>
+  <millis>1379215804734</millis>
+  <sequence>7</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:29:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:30:58</date>
+  <millis>1379215858867</millis>
   <sequence>8</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>handleMessages</method>
   <thread>13</thread>
-  <message>Sending messagefrom: {id=;name=Miami, FL;number=+13055052935;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +13055052935 message: Washington West Project  5/5  1201 Locust Street    Philadelphia,  PA  19107    </message>
+  <message>0 messages recieved from GVOICE</message>
 </record>
 <record>
-  <date>2013-09-14T20:11:01</date>
-  <millis>1379214661378</millis>
+  <date>2013-09-14T20:30:58</date>
+  <millis>1379215858868</millis>
   <sequence>9</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>SetNewDate</method>
   <thread>13</thread>
-  <message>Date set to Sat Sep 14 20:10:58 PDT 2013</message>
+  <message>Date set to Sat Sep 14 20:30:58 PDT 2013</message>
 </record>
 <record>
-  <date>2013-09-14T20:12:01</date>
-  <millis>1379214721985</millis>
+  <date>2013-09-14T20:31:59</date>
+  <millis>1379215919057</millis>
   <sequence>10</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
@@ -123,19 +128,19 @@
   <message>0 messages recieved from GVOICE</message>
 </record>
 <record>
-  <date>2013-09-14T20:12:01</date>
-  <millis>1379214721986</millis>
+  <date>2013-09-14T20:31:59</date>
+  <millis>1379215919058</millis>
   <sequence>11</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>SetNewDate</method>
   <thread>13</thread>
-  <message>Date set to Sat Sep 14 20:11:58 PDT 2013</message>
+  <message>Date set to Sat Sep 14 20:31:58 PDT 2013</message>
 </record>
 <record>
-  <date>2013-09-14T20:12:59</date>
-  <millis>1379214779073</millis>
+  <date>2013-09-14T20:32:58</date>
+  <millis>1379215978877</millis>
   <sequence>12</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
@@ -145,13 +150,761 @@
   <message>0 messages recieved from GVOICE</message>
 </record>
 <record>
-  <date>2013-09-14T20:12:59</date>
-  <millis>1379214779074</millis>
+  <date>2013-09-14T20:32:58</date>
+  <millis>1379215978879</millis>
   <sequence>13</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>SetNewDate</method>
   <thread>13</thread>
-  <message>Date set to Sat Sep 14 20:12:58 PDT 2013</message>
+  <message>Date set to Sat Sep 14 20:32:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:33:59</date>
+  <millis>1379216039213</millis>
+  <sequence>14</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:33:59</date>
+  <millis>1379216039215</millis>
+  <sequence>15</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:33:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:34:58</date>
+  <millis>1379216098794</millis>
+  <sequence>16</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:34:58</date>
+  <millis>1379216098795</millis>
+  <sequence>17</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:34:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:35:58</date>
+  <millis>1379216158935</millis>
+  <sequence>18</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:35:58</date>
+  <millis>1379216158937</millis>
+  <sequence>19</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:35:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:36:58</date>
+  <millis>1379216218814</millis>
+  <sequence>20</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:36:58</date>
+  <millis>1379216218816</millis>
+  <sequence>21</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:36:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:37:58</date>
+  <millis>1379216278745</millis>
+  <sequence>22</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:37:58</date>
+  <millis>1379216278747</millis>
+  <sequence>23</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:37:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:38:58</date>
+  <millis>1379216338869</millis>
+  <sequence>24</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:38:58</date>
+  <millis>1379216338870</millis>
+  <sequence>25</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:38:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:39:59</date>
+  <millis>1379216399201</millis>
+  <sequence>26</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 20:39:00 PDT 2013, from={id=;name=Culver City, CA;number=+13106210168;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=94606]</message>
+</record>
+<record>
+  <date>2013-09-14T20:39:59</date>
+  <millis>1379216399505</millis>
+  <sequence>27</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>1 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:39:59</date>
+  <millis>1379216399506</millis>
+  <sequence>28</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Culver City, CA;number=+13106210168;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +13106210168 message: 1. Health  </message>
+</record>
+<record>
+  <date>2013-09-14T20:40:00</date>
+  <millis>1379216400692</millis>
+  <sequence>29</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:39:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:41:00</date>
+  <millis>1379216460367</millis>
+  <sequence>30</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 20:40:00 PDT 2013, from={id=;name=Culver City, CA;number=+13106210168;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=94606 health]</message>
+</record>
+<record>
+  <date>2013-09-14T20:41:01</date>
+  <millis>1379216461423</millis>
+  <sequence>31</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>1 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:41:01</date>
+  <millis>1379216461424</millis>
+  <sequence>32</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Culver City, CA;number=+13106210168;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +13106210168 message: We encountered trouble accessing our database.  Please try againjava.net.ConnectException: Connection refused: connect</message>
+</record>
+<record>
+  <date>2013-09-14T20:41:02</date>
+  <millis>1379216462791</millis>
+  <sequence>33</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:40:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:41:58</date>
+  <millis>1379216518961</millis>
+  <sequence>34</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 20:41:00 PDT 2013, from={id=;name=Culver City, CA;number=+13106210168;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=94606 health]</message>
+</record>
+<record>
+  <date>2013-09-14T20:42:00</date>
+  <millis>1379216520266</millis>
+  <sequence>35</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>1 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:42:00</date>
+  <millis>1379216520267</millis>
+  <sequence>36</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Culver City, CA;number=+13106210168;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +13106210168 message: We encountered trouble accessing our database.  Please try againjava.net.ConnectException: Connection refused: connect</message>
+</record>
+<record>
+  <date>2013-09-14T20:42:01</date>
+  <millis>1379216521411</millis>
+  <sequence>37</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:41:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:42:59</date>
+  <millis>1379216579051</millis>
+  <sequence>38</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:42:59</date>
+  <millis>1379216579052</millis>
+  <sequence>39</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:42:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:43:58</date>
+  <millis>1379216638751</millis>
+  <sequence>40</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:43:58</date>
+  <millis>1379216638754</millis>
+  <sequence>41</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:43:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:44:58</date>
+  <millis>1379216698820</millis>
+  <sequence>42</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:44:58</date>
+  <millis>1379216698821</millis>
+  <sequence>43</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:44:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:45:58</date>
+  <millis>1379216758730</millis>
+  <sequence>44</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:45:58</date>
+  <millis>1379216758732</millis>
+  <sequence>45</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:45:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:46:59</date>
+  <millis>1379216819250</millis>
+  <sequence>46</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:46:59</date>
+  <millis>1379216819251</millis>
+  <sequence>47</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:46:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:47:58</date>
+  <millis>1379216878664</millis>
+  <sequence>48</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:47:58</date>
+  <millis>1379216878665</millis>
+  <sequence>49</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:47:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:48:59</date>
+  <millis>1379216939236</millis>
+  <sequence>50</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:48:59</date>
+  <millis>1379216939238</millis>
+  <sequence>51</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:48:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:49:59</date>
+  <millis>1379216999083</millis>
+  <sequence>52</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:49:59</date>
+  <millis>1379216999084</millis>
+  <sequence>53</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:49:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:51:01</date>
+  <millis>1379217061979</millis>
+  <sequence>54</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:51:01</date>
+  <millis>1379217061980</millis>
+  <sequence>55</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:50:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:51:59</date>
+  <millis>1379217119791</millis>
+  <sequence>56</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:51:59</date>
+  <millis>1379217119793</millis>
+  <sequence>57</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:51:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:52:58</date>
+  <millis>1379217178879</millis>
+  <sequence>58</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:52:58</date>
+  <millis>1379217178881</millis>
+  <sequence>59</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:52:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:53:58</date>
+  <millis>1379217238931</millis>
+  <sequence>60</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:53:58</date>
+  <millis>1379217238932</millis>
+  <sequence>61</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:53:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:54:59</date>
+  <millis>1379217299016</millis>
+  <sequence>62</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:54:59</date>
+  <millis>1379217299018</millis>
+  <sequence>63</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:54:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:55:59</date>
+  <millis>1379217359112</millis>
+  <sequence>64</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:55:59</date>
+  <millis>1379217359114</millis>
+  <sequence>65</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:55:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:56:59</date>
+  <millis>1379217419208</millis>
+  <sequence>66</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:56:59</date>
+  <millis>1379217419209</millis>
+  <sequence>67</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:56:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:58:01</date>
+  <millis>1379217481136</millis>
+  <sequence>68</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:58:01</date>
+  <millis>1379217481137</millis>
+  <sequence>69</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:57:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:58:59</date>
+  <millis>1379217539559</millis>
+  <sequence>70</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:58:59</date>
+  <millis>1379217539560</millis>
+  <sequence>71</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:58:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T20:59:59</date>
+  <millis>1379217599126</millis>
+  <sequence>72</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T20:59:59</date>
+  <millis>1379217599128</millis>
+  <sequence>73</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 20:59:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T21:00:59</date>
+  <millis>1379217659774</millis>
+  <sequence>74</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T21:00:59</date>
+  <millis>1379217659776</millis>
+  <sequence>75</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 21:00:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T21:02:00</date>
+  <millis>1379217720728</millis>
+  <sequence>76</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T21:02:00</date>
+  <millis>1379217720729</millis>
+  <sequence>77</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 21:01:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T21:02:58</date>
+  <millis>1379217778843</millis>
+  <sequence>78</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T21:02:58</date>
+  <millis>1379217778844</millis>
+  <sequence>79</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 21:02:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T21:03:58</date>
+  <millis>1379217838755</millis>
+  <sequence>80</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>0 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T21:03:58</date>
+  <millis>1379217838757</millis>
+  <sequence>81</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 21:03:58 PDT 2013</message>
 </record>
