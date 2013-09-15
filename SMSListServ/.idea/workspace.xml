@@ -26,23 +26,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <method_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/TranSMSServ.java" line="223" class="TranSMSServ" package="">
-        <option name="WATCH_ENTRY" value="true" />
-        <option name="WATCH_EXIT" value="true" />
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </method_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -103,13 +86,40 @@
       <file leaf-file-name="TranSMSServ.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="265" column="39" selection-start="9439" selection-end="9439" vertical-scroll-proportion="0.33707866">
+            <state line="190" column="20" selection-start="6764" selection-end="6806" vertical-scroll-proportion="0.5982906">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2336#2465#0" expanded="true" />
-                <element signature="e#2454#2455#0" expanded="true" />
-                <element signature="e#5891#5900#0" expanded="true" />
+                <element signature="docComment;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="e#1933#1948#0" expanded="false" />
+                <element signature="method#init_properties#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#handleMessages#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#parseMessages#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#generateResponse#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#InputStreamToString#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#commandProcess#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#sendMessage#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="method#generateSummary#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="class#Command#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="URLBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/URLBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="31" selection-start="676" selection-end="676" vertical-scroll-proportion="-0.8333333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,7 +145,7 @@
       <file leaf-file-name="TransSMS.log" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TransSMS.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="284" selection-start="5289" selection-end="5289" vertical-scroll-proportion="-78.333336">
+            <state line="1922" column="284" selection-start="54927" selection-end="54927" vertical-scroll-proportion="-78.333336">
               <folding />
             </state>
           </provider>
@@ -198,15 +208,16 @@
         <option value="$PROJECT_DIR$/src/TranSMS.java" />
         <option value="$PROJECT_DIR$/TransSMS.log" />
         <option value="$PROJECT_DIR$/settings.env" />
+        <option value="$PROJECT_DIR$/src/Message.java" />
+        <option value="$PROJECT_DIR$/src/URLBuilder.java" />
         <option value="$PROJECT_DIR$/src/TranSMSServ.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="886" />
+    <option name="x" value="-7" />
+    <option name="width" value="1598" />
+    <option name="height" value="868" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -339,6 +350,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMSListerv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMSListerv" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -569,7 +602,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
+    <frame x="-7" y="0" width="1598" height="868" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -583,8 +616,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286908" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23741935" sideWeight="0.776738" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1967742" sideWeight="0.68105847" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3189415" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.94142854" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.058571428" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29387188" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -651,18 +684,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SMSListerv/Util/AddrBookManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SMSListerv/Util/AddrBookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="680" selection-end="680" vertical-scroll-proportion="0.78571427">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/humanEnteredData.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="76" selection-start="347" selection-end="347" vertical-scroll-proportion="0.15848528" />
@@ -710,7 +731,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TransSMS.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="284" selection-start="5289" selection-end="5289" vertical-scroll-proportion="-78.333336">
+        <state line="1922" column="284" selection-start="54927" selection-end="54927" vertical-scroll-proportion="-78.333336">
           <folding />
         </state>
       </provider>
@@ -750,14 +771,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/URLBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="31" selection-start="676" selection-end="676" vertical-scroll-proportion="-0.8333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="265" column="39" selection-start="9439" selection-end="9439" vertical-scroll-proportion="0.33707866">
+        <state line="190" column="20" selection-start="6764" selection-end="6806" vertical-scroll-proportion="0.5982906">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2336#2465#0" expanded="true" />
-            <element signature="e#2454#2455#0" expanded="true" />
-            <element signature="e#5891#5900#0" expanded="true" />
+            <element signature="docComment;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="e#1933#1948#0" expanded="false" />
+            <element signature="method#init_properties#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#handleMessages#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#parseMessages#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#generateResponse#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#InputStreamToString#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#commandProcess#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#sendMessage#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="method#generateSummary#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="class#Command#0" expanded="false" />
           </folding>
         </state>
       </provider>

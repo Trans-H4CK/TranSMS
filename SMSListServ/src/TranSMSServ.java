@@ -1,9 +1,7 @@
+import SMSListerv.MessageParser;
 import com.techventus.server.voice.Voice;
-import com.techventus.server.voice.datatypes.Contact;
 import com.techventus.server.voice.datatypes.records.SMS;
 import com.techventus.server.voice.datatypes.records.SMSThread;
-import gvjava.org.json.JSONArray;
-import gvjava.org.json.JSONException;
 import gvjava.org.json.JSONObject;
 
 import java.io.*;
@@ -44,6 +42,10 @@ public class TranSMSServ {
     static Pattern patCommand = Pattern
             .compile("([a-zA-Z]*)\\s*(.*)");
     private static String ACCEPTHEADER = "application/vnd.trans_resource.v1";
+    private static String introTxt = "Welcome to TranSMS! Text HELP for support, INFO for information, or your zip code to begin looking for resources. Brought to you by Trans*Resource US.";
+    private static String helpTxt = "Text zip code for categories. Text zip plus category for resource list (94560 health). Text zip, category, resource number for full listing (94560 health 3).";
+    private static String infoTxt = "TranSMS (c) 2013 Trans*Resource US. A Trans*H4CK Oakland project. More info at www.transresource.us.";
+
 
     public static void main(String[] arg) {
         //todo:refactor
@@ -74,7 +76,6 @@ public class TranSMSServ {
         gc.set(Calendar.MILLISECOND, 0);
         gc.add(Calendar.MINUTE, 0);
 
-
         Timer time = new Timer(); // Instantiate Timer Object
         time.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -85,7 +86,6 @@ public class TranSMSServ {
         smsLogger.info("SMS Checks scheduled to begin on " + gc.getTime());
 
     }
-
 
     private static boolean init_properties() {
         defaultProps = new Properties();
@@ -174,7 +174,6 @@ public class TranSMSServ {
         smsLogger.info("Date set to " + lastCheckDate);
     }
 
-
     static private ArrayList<Message> parseMessages(Collection<SMSThread> inThreads) {
         ArrayList<Message> newMessages = new ArrayList<Message>();
 
@@ -189,7 +188,7 @@ public class TranSMSServ {
     private static void parseMessagesFromThread(ArrayList<Message> newMessages, Collection<SMS> messages) {
         for (SMS message : messages) {
             //check if newer than last datastamp
-            if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
+                if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
 
                 smsLogger.info(message.toString());
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
@@ -223,31 +222,15 @@ public class TranSMSServ {
 
     private static void generateResponse(SMS in_message, ArrayList<Message> outgoing, Matcher matchReg) {
         //Make API call and build response with relevant data.
-        Boolean zipOnly = true;
-        int id = -1;
-        String requestURL = APIURL;
-        String responseText = "";
-        String GETargs = "?";
-        if (matchReg.group(1) != null) {
-            String zip = matchReg.group(1);
-            GETargs = GETargs + "zip_code=" + zip + "&";
-        }
-        if (matchReg.group(3) != null) {
-            zipOnly = false;
-            String category = matchReg.group(3);
-            GETargs = GETargs + "category=" + category + "&per_page=5&";
-        }
-        if (matchReg.group(5) != null) {
-            id = Integer.parseInt(matchReg.group(5));
-        }
-        try {
-            if (zipOnly) {
-                requestURL = requestURL + ZIPURL;
-            } else {
-                requestURL = requestURL + CATURL;
-            }
+        URLBuilder URLBuilder = new URLBuilder(matchReg).invoke(null, null, null);
+        String finalURL = URLBuilder.getFinalURL();
+        Boolean zipOnly = URLBuilder.getZipOnly();
+        int id = URLBuilder.getId();
+        String category = URLBuilder.getCategory();
 
-            URL url = new URL(requestURL + GETargs);
+        String responseText = "";
+        try {
+            URL url = new URL(finalURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", ACCEPTHEADER);
@@ -260,11 +243,11 @@ public class TranSMSServ {
             InputStream is = conn.getInputStream();
 
             // Creating JSON object model from stream
-            JSONObject jsonResponse = new JSONObject(InputStreamtoString(is));
+            JSONObject jsonResponse = new JSONObject(InputStreamToString(is));
             if (zipOnly) {
-                responseText = parseCats(jsonResponse);
+                responseText = MessageParser.parseCats(jsonResponse);
             } else {
-                responseText = parseResources(jsonResponse, id);
+                responseText = MessageParser.parseResources(jsonResponse, id, category);
             }
         } catch (Exception e) {
             responseText = "We encountered trouble accessing our database.  Please try again" + e.toString();
@@ -273,88 +256,7 @@ public class TranSMSServ {
         outgoing.add(new Message(in_message.getFrom().getNumber(), in_message.getFrom(), responseText));
     }
 
-    private static String parseCats(JSONObject jsonResponse) {  //MEOW
-        //parses all the categories for a given zip code           MEOW
-        try {
-            JSONArray categorylist = jsonResponse.getJSONArray("categories");
-            StringBuilder sb = new StringBuilder();
-            sb.append("Trans resources near that zipcode:")
-            for(int index=0;index<categorylist.length();index++)
-            {
-                JSONObject curResource = categorylist.getJSONObject(index).getJSONObject("categories");
-                sb.append(index+1);
-                sb.append(". ");
-                sb.append(curResource.get("name"));
-                sb.append("\n  ");
-            }
-            return sb.toString();
-        }
-            catch (Exception e) {
-                smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
-
-                return "PARSE_ERROR ";
-            }
-    }
-
-    private static String parseResources(JSONObject jsonResponse, int id) {
-        try {
-            JSONArray resourceList = jsonResponse.getJSONArray("resources");
-            if (id != -1) { //build view for individual resource details
-                return parseResource(id, resourceList);
-            } else {  //view for nearby resource summary
-                return ParseResourceList(resourceList);
-            }
-
-        } catch (Exception e) {
-            smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
-            return "PARSE_ERROR ";
-        }
-
-    }
-
-    private static String ParseResourceList(JSONArray resourceList) throws JSONException {
-        StringBuilder sb = new StringBuilder();
-        for(int index=0;index<resourceList.length();index++)
-        {
-            JSONObject curResource = resourceList.getJSONObject(index).getJSONObject("properties");
-            sb.append(index+1);
-            sb.append(". ");
-            sb.append(curResource.get("name"));
-            sb.append("  ");
-            sb.append(curResource.get("trans_friendliness_rating"));
-            sb.append("/5  ");
-            sb.append(curResource.get("distance"));
-            sb.append(" miles \n");
-        }
-        return sb.toString();
-    }
-
-    private static String parseResource(int id, JSONArray resourceList) throws JSONException {
-        JSONObject curResource = resourceList.getJSONObject(id).getJSONObject("properties");
-        StringBuilder sb = new StringBuilder();
-        sb.append(curResource.get("name"));
-        sb.append("  ");
-        sb.append(curResource.get("trans_friendliness_rating"));
-        sb.append("/5  ");
-        sb.append(curResource.get("street_address_1"));
-        sb.append("  ");
-        sb.append(curResource.get("street_address_2"));
-        sb.append("  ");
-        sb.append(curResource.get("city"));
-        sb.append(",  ");
-        sb.append(curResource.get("state"));
-        sb.append("  ");
-        sb.append(curResource.get("zip"));
-        sb.append("  ");
-        sb.append(curResource.get("distance"));
-        sb.append(" miles ");
-        sb.append(curResource.get("phone"));
-        sb.append("  ");
-        sb.append(curResource.get("contact_name"));
-        return sb.toString();
-    }
-
-    static private String InputStreamtoString(InputStream in) {
+    static private String InputStreamToString(InputStream in) {
         InputStreamReader is = new InputStreamReader(in);
         StringBuilder sb = new StringBuilder();
         BufferedReader br = new BufferedReader(is);
@@ -375,40 +277,27 @@ public class TranSMSServ {
 
     }
 
-
     static private void commandProcess(Message e) {
         smsLogger.info(e.toString());
         StringBuilder sb = new StringBuilder();
-        String resultText = "Command Succeeded:" + e.text;
+        String resultText = "";
         switch (e.command) {
             //0 arguments
-            case COMMANDS:
-                resultText = "Commands are: " +
-                        "(you must specify X and Y if needed) " +
-                        " HELP (gives a help text)\n" +
-                        " LISTS(shows all lists)\n" +
-                        " COMMANDS(shows this list)\n" +
-                        " CATFACT(gives you a true catfact)\n" +
-                        " REGISTER(registers you in the database as X)" +
-                        " SUBSCRIBE(adds you to list X)\n" +
-                        " UNSUBSCRIBE(removes you from list X)\n" +
-                        " ADD(create a new list X)\n" +
-                        " REMOVE(delete list X)\n" +
-                        " WHO(shows who is on list X)\n" +
-                        " SUBOTHER(adds X to list Y)\n" +
-                        " UNSUBOTHER(removes X from group Y)\n";
+            case INFO:
+                resultText = infoTxt;
+                break;
+            case HELP:
+                resultText = helpTxt;
                 break;
             default:
-            case HELP:
-                resultText = "Welcome to TranSMS.  Msg a zipcode \"#####\" for categories in that area. "
-                        + "Msg a zip and category for a list of trans-friendly resources";
+            case INTRO:
+                resultText = introTxt;
         }
 
         Message resultMessage = new Message(e.from.getNumber(), e.from, resultText);
         sendMessage(resultMessage);
 
     }
-
 
     static private void sendMessage(Message message) {
         if (!voice.isLoggedIn()) {
@@ -425,40 +314,19 @@ public class TranSMSServ {
         }
     }
 
-}
-
-class Message {
-    boolean isCommand;
-    Command command;
-    Contact from;
-    String address = "";
-    String text = "";
-
-    Message(String toWho, Contact fromWhom, String intext) {
-        from = fromWhom;
-        address = toWho;
-        isCommand = false;
-        text = intext;
+    static private String generateSummary(SMS message)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(message.getDateTime().toString());
+        sb.append(message.getFrom());
+        sb.append(message.getContent());
+        return sb.toString();
     }
 
-    Message(Command inCommand, Contact fromWhom, String intext) {
-        isCommand = true;
-        command = inCommand;
-        from = fromWhom;
-        text = intext;
-
-    }
-
-    public String toString() {
-        if (isCommand) {
-            return "Command: " + command.name() + text;
-        }
-        return "from: " + from + " to: " + address + " message: " + text;
-
-    }
 }
 
 enum Command {
     HELP,         // RETURN A HELP TEXT (DEFAULT)
-    COMMANDS,     // RETURN A LIST OF ALL COMMANDS
+    INFO,         // RETURN A INFO TEXT ABOUT THE SERVICE
+    INTRO,        // RETURN A INTRO TEXT
 }
