@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
  * Time: 10:33 AM
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings("ALL")
 public class AddrBookManager {
     String HumanPath;
     String MachinePath;

@@ -1,9 +1,9 @@
 import com.techventus.server.voice.datatypes.Contact;
 
 class Message {
-    boolean isCommand;
+    final boolean isCommand;
     Command command;
-    Contact from;
+    final Contact from;
     String address = "";
     String text = "";
 

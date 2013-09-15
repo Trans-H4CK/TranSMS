@@ -7,12 +7,12 @@ import gvjava.org.json.JSONObject;
 import java.util.logging.Logger;
 
 public class MessageParser {
-    public static String zipHeader = "TranSMS: Categories Near You";
-    public static String zipFooter = "Text Zip and Category for List. Or, text HELP.";
-    public static String resourceListHeader = "TranSMS: Resources in ";
-    public static String resourceListFooter = "Text Zip, Cat and Resource No. for Info. Or, text HELP.";
-    public static String resourceDetailHeader = "TranSMS: Resource Info";
-    public static String resourceDetailFooter = "Text Zip and Cat to Go Back. Or, text HELP.";
+    private static final String zipHeader = "TranSMS: Categories Near You";
+    private static final String zipFooter = "Text Zip and Category for List. Or, text HELP.";
+    private static final String resourceListHeader = "TranSMS: Resources in ";
+    private static final String resourceListFooter = "Text Zip, Cat and Resource No. for Info. Or, text HELP.";
+    private static final String resourceDetailHeader = "TranSMS: Resource Info";
+    private static final String resourceDetailFooter = "Text Zip and Cat to Go Back. Or, text HELP.";
 
     public static String parseCats(JSONObject jsonResponse, Logger smsLogger) {  //MEOW
         //parses all the categories for a given zip code           MEOW
@@ -52,7 +52,7 @@ public class MessageParser {
 
     }
 
-    public static String ParseResourceList(JSONArray resourceList, String category) throws JSONException {
+    private static String ParseResourceList(JSONArray resourceList, String category) throws JSONException {
         StringBuilder sb = new StringBuilder();
 
         sb.append(resourceListHeader);
@@ -73,7 +73,7 @@ public class MessageParser {
         return sb.toString();
     }
 
-    public static String parseResource(int id, JSONArray resourceList) throws JSONException {
+    private static String parseResource(int id, JSONArray resourceList) throws JSONException {
         JSONObject curResource = resourceList.getJSONObject(id).getJSONObject("properties");
         StringBuilder sb = new StringBuilder();
         sb.append(resourceDetailHeader);

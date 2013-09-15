@@ -1,7 +1,7 @@
 import java.util.regex.Matcher;
 
 public class URLBuilder {
-    private Matcher matchReg;
+    private final Matcher matchReg;
     private Boolean zipOnly;
     private int id;
     private String category;
@@ -27,7 +27,7 @@ public class URLBuilder {
         return finalURL;
     }
 
-    public URLBuilder invoke(String ZIPURL, String CATURL, String APIURL) {
+    public URLBuilder invoke( String APIURL, String ZIPURL, String CATURL) {
         zipOnly = true;
         id = -1;
         String requestURL = APIURL;

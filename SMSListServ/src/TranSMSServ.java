@@ -28,23 +28,22 @@ public class TranSMSServ {
     private static String userName;
     private static String pass;
     private static Date lastCheckDate;
-    static Properties defaultProps;
-    static Properties dateProps;
-    static String APIURL;
-    static String ZIPURL;
-    static String CATURL;
+    private static Properties dateProps;
+    private static String APIURL;
+    private static String ZIPURL;
+    private static String CATURL;
     private final static Logger smsLogger = Logger.getLogger("TransSMS");
-    static Voice voice;
-    static Pattern patRegMessage = Pattern
+    private static Voice voice;
+    private static final Pattern patRegMessage = Pattern
             .compile("([0-9]+)"
                     + "(\\s(\\S*))?"
                     + "(\\s([0-9]*))?");
-    static Pattern patCommand = Pattern
+    private static final Pattern patCommand = Pattern
             .compile("([a-zA-Z]*)\\s*(.*)");
     private static String ACCEPTHEADER = "application/vnd.trans_resource.v1";
-    private static String introTxt = "Welcome to TranSMS! Text HELP for support, INFO for information, or your zip code to begin looking for resources. Brought to you by Trans*Resource US.";
-    private static String helpTxt = "Text zip code for categories. Text zip plus category for resource list (94560 health). Text zip, category, resource number for full listing (94560 health 3).";
-    private static String infoTxt = "TranSMS (c) 2013 Trans*Resource US. A Trans*H4CK Oakland project. More info at www.transresource.us.";
+    private static final String introTxt = "Welcome to TranSMS! Text HELP for support, INFO for information, or your zip code to begin looking for resources. Brought to you by Trans*Resource US.";
+    private static final String helpTxt = "Text zip code for categories. Text zip plus category for resource list (94560 health). Text zip, category, resource number for full listing (94560 health 3).";
+    private static final String infoTxt = "TranSMS (c) 2013 Trans*Resource US. A Trans*H4CK Oakland project. More info at www.transresource.us.";
     private static HashSet<String> seenMessages;
 
     public static void main(String[] arg) {
@@ -54,7 +53,7 @@ public class TranSMSServ {
 
         if (init_properties()) return;  // returns true if init_properties failed
 
-        seenMessages = new HashSet();
+        seenMessages = new HashSet<>();
         try {
             smsLogger.addHandler(new FileHandler("TransSMS.log"));
             smsLogger.info("TranSMSServ server Spinning Up");
@@ -89,7 +88,7 @@ public class TranSMSServ {
     }
 
     private static boolean init_properties() {
-        defaultProps = new Properties();
+        Properties defaultProps = new Properties();
         try {
             FileInputStream in = new FileInputStream("settings.env");
             defaultProps.load(in);
@@ -179,7 +178,7 @@ public class TranSMSServ {
     }
 
     static private ArrayList<Message> parseMessages(Collection<SMSThread> inThreads) {
-        ArrayList<Message> newMessages = new ArrayList<Message>();
+        ArrayList<Message> newMessages = new ArrayList<>();
 
         for (SMSThread thread : inThreads) {
             Collection<SMS> messages = thread.getAllSMS();
@@ -191,7 +190,7 @@ public class TranSMSServ {
 
     private static void parseMessagesFromThread(ArrayList<Message> newMessages, Collection<SMS> messages) {
         for (SMS message : messages) {
-            //check if newer than last datastamp
+            //check if newer than last datestamp
                 String MsgSummary = generateSummary(message);
                 Boolean alreadyProcessed = seenMessages.contains(MsgSummary);
                 seenMessages.add(MsgSummary);
@@ -215,8 +214,8 @@ public class TranSMSServ {
                     try {
                         messageCMD = Command.valueOf(matchCommand.group(1).toUpperCase());
                     } catch (IllegalArgumentException e) {
-                        messageCMD = Command.HELP;
-                        smsLogger.warning("Possible error while parsing " + message.getContent() + " Defaulted to HELP");
+                        messageCMD = Command.INTRO;
+                        smsLogger.warning("Possible error while parsing " + message.getContent() + " Defaulted to INTRO");
                     }
 
                     newMessages.add(new Message(messageCMD, message.getFrom(), matchCommand.group(2)));
@@ -231,13 +230,13 @@ public class TranSMSServ {
 
     private static void generateResponse(SMS in_message, ArrayList<Message> outgoing, Matcher matchReg) {
         //Make API call and build response with relevant data.
-        URLBuilder URLBuilder = new URLBuilder(matchReg).invoke(null, null, null);
+        URLBuilder URLBuilder = new URLBuilder(matchReg).invoke(APIURL, ZIPURL, CATURL);
         String finalURL = URLBuilder.getFinalURL();
         Boolean zipOnly = URLBuilder.getZipOnly();
         int id = URLBuilder.getId();
         String category = URLBuilder.getCategory();
 
-        String responseText = "";
+        String responseText;
         try {
             URL url = new URL(finalURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -254,9 +253,9 @@ public class TranSMSServ {
             // Creating JSON object model from stream
             JSONObject jsonResponse = new JSONObject(InputStreamToString(is));
             if (zipOnly) {
-                responseText = MessageParser.parseCats(jsonResponse, null);
+                responseText = MessageParser.parseCats(jsonResponse, smsLogger);
             } else {
-                responseText = MessageParser.parseResources(jsonResponse, id, category, null);
+                responseText = MessageParser.parseResources(jsonResponse, id, category, smsLogger);
             }
         } catch (Exception e) {
             responseText = "We encountered trouble accessing our database.  Please try again" + e.toString();
@@ -288,8 +287,7 @@ public class TranSMSServ {
 
     static private void commandProcess(Message e) {
         smsLogger.info(e.toString());
-        StringBuilder sb = new StringBuilder();
-        String resultText = "";
+        String resultText;
         switch (e.command) {
             //0 arguments
             case INFO:
@@ -327,7 +325,7 @@ public class TranSMSServ {
     {
         StringBuilder sb = new StringBuilder();
         sb.append(message.getDateTime().toString());
-        sb.append(message.getFrom());
+        sb.append(message.getFrom().getNumber());
         sb.append(message.getContent());
         return sb.toString();
     }
