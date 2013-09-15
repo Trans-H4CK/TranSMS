@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2013-09-14T16:34:57</date>
-  <millis>1379201697827</millis>
+  <date>2013-09-14T19:52:07</date>
+  <millis>1379213527571</millis>
   <sequence>0</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
@@ -13,20 +13,152 @@
   <message>TranSMSServ server Spinning Up</message>
 </record>
 <record>
-  <date>2013-09-14T16:34:59</date>
-  <millis>1379201699094</millis>
+  <date>2013-09-14T19:52:12</date>
+  <millis>1379213532317</millis>
   <sequence>1</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>main</method>
   <thread>1</thread>
-  <message>SMS Checks scheduled to begin on Sat Sep 14 16:34:58 PDT 2013</message>
+  <message>SMS Checks scheduled to begin on Sat Sep 14 19:52:58 PDT 2013</message>
 </record>
 <record>
-  <date>2013-09-14T16:35:00</date>
-  <millis>1379201700243</millis>
+  <date>2013-09-14T19:53:03</date>
+  <millis>1379213583253</millis>
   <sequence>2</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 19:52:00 PDT 2013, from={id=;name=Alexandria, VA;number=+17035082486;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=20194]</message>
+</record>
+<record>
+  <date>2013-09-14T19:53:04</date>
+  <millis>1379213584984</millis>
+  <sequence>3</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 19:52:00 PDT 2013, from={id=;name=Miami, FL;number=+13055052935;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=61701 test]</message>
+</record>
+<record>
+  <date>2013-09-14T19:53:06</date>
+  <millis>1379213586157</millis>
+  <sequence>4</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>2 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T19:53:06</date>
+  <millis>1379213586159</millis>
+  <sequence>5</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Alexandria, VA;number=+17035082486;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +17035082486 message: We encountered trouble accessing our database.  Please try againjava.net.ConnectException: Connection refused: connect</message>
+</record>
+<record>
+  <date>2013-09-14T19:53:08</date>
+  <millis>1379213588208</millis>
+  <sequence>6</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Miami, FL;number=+13055052935;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +13055052935 message: We encountered trouble accessing our database.  Please try againjava.net.ConnectException: Connection refused: connect</message>
+</record>
+<record>
+  <date>2013-09-14T19:53:10</date>
+  <millis>1379213590116</millis>
+  <sequence>7</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 19:52:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T19:54:02</date>
+  <millis>1379213642609</millis>
+  <sequence>8</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 19:53:00 PDT 2013, from={id=;name=Alexandria, VA;number=+17035082486;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=20194]</message>
+</record>
+<record>
+  <date>2013-09-14T19:54:03</date>
+  <millis>1379213643488</millis>
+  <sequence>9</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>parseMessagesFromThread</method>
+  <thread>13</thread>
+  <message>SMS [dateTime=Sat Sep 14 19:53:00 PDT 2013, from={id=;name=Miami, FL;number=+13055052935;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;}, text=61701 test]</message>
+</record>
+<record>
+  <date>2013-09-14T19:54:05</date>
+  <millis>1379213645182</millis>
+  <sequence>10</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>2 messages recieved from GVOICE</message>
+</record>
+<record>
+  <date>2013-09-14T19:54:05</date>
+  <millis>1379213645183</millis>
+  <sequence>11</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Alexandria, VA;number=+17035082486;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +17035082486 message: {"categories":[{"categories":{"id":1,"name":"Health","internal_name":"HEALTH"}}]}</message>
+</record>
+<record>
+  <date>2013-09-14T19:54:14</date>
+  <millis>1379213654339</millis>
+  <sequence>12</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>handleMessages</method>
+  <thread>13</thread>
+  <message>Sending messagefrom: {id=;name=Miami, FL;number=+13055052935;imageUrl=http://www.google.com/voice/resources/1366864992-blue_ghost.jpg;} to: +13055052935 message: We encountered trouble accessing our database.  Please try againjava.lang.RuntimeException: Failed : HTTP error code : 500</message>
+</record>
+<record>
+  <date>2013-09-14T19:54:15</date>
+  <millis>1379213655518</millis>
+  <sequence>13</sequence>
+  <logger>TransSMS</logger>
+  <level>INFO</level>
+  <class>TranSMSServ</class>
+  <method>SetNewDate</method>
+  <thread>13</thread>
+  <message>Date set to Sat Sep 14 19:53:58 PDT 2013</message>
+</record>
+<record>
+  <date>2013-09-14T19:55:00</date>
+  <millis>1379213700511</millis>
+  <sequence>14</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
@@ -35,13 +167,13 @@
   <message>0 messages recieved from GVOICE</message>
 </record>
 <record>
-  <date>2013-09-14T16:35:00</date>
-  <millis>1379201700246</millis>
-  <sequence>3</sequence>
+  <date>2013-09-14T19:55:00</date>
+  <millis>1379213700513</millis>
+  <sequence>15</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>SetNewDate</method>
   <thread>13</thread>
-  <message>Date set to Sat Sep 14 16:34:59 PDT 2013</message>
+  <message>Date set to Sat Sep 14 19:54:58 PDT 2013</message>
 </record>

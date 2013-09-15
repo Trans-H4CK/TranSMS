@@ -2,10 +2,12 @@ import com.techventus.server.voice.Voice;
 import com.techventus.server.voice.datatypes.Contact;
 import com.techventus.server.voice.datatypes.records.SMS;
 import com.techventus.server.voice.datatypes.records.SMSThread;
+import gvjava.org.json.JSONArray;
+import gvjava.org.json.JSONObject;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,6 +16,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,14 +32,17 @@ public class TranSMSServ {
     static Properties defaultProps;
     static Properties dateProps;
     static String APIURL;
+    static String ZIPURL;
+    static String CATURL;
     private final static Logger smsLogger = Logger.getLogger("TransSMS");
     static Voice voice;
     static Pattern patRegMessage = Pattern
             .compile("([0-9]+)"
-                  + "(\\s(\\S*))?"
-                  + "(\\s([0-9]*))?");
+                    + "(\\s(\\S*))?"
+                    + "(\\s([0-9]*))?");
     static Pattern patCommand = Pattern
             .compile("([a-zA-Z]*)\\s*(.*)");
+    private static String ACCEPTHEADER = "application/vnd.trans_resource.v1";
 
     public static void main(String[] arg) {
         //todo:refactor
@@ -75,7 +81,7 @@ public class TranSMSServ {
                 handleMessages();
             }
         }, gc.getTime(), 1000 * 60);
-    smsLogger.info("SMS Checks scheduled to begin on " + gc.getTime());
+        smsLogger.info("SMS Checks scheduled to begin on " + gc.getTime());
 
     }
 
@@ -88,6 +94,11 @@ public class TranSMSServ {
             if (defaultProps.containsKey("username")) userName = defaultProps.getProperty("username");
             if (defaultProps.containsKey("password")) pass = defaultProps.getProperty("password");
             if (defaultProps.containsKey("APIURL")) APIURL = defaultProps.getProperty("APIURL");
+            if (defaultProps.containsKey("ACCEPTHEADER")) ACCEPTHEADER = defaultProps.getProperty("ACCEPTHEADER");
+            if (defaultProps.containsKey("CATURL")) CATURL = defaultProps.getProperty("CATURL");
+            if (defaultProps.containsKey("ZIPURL")) ZIPURL = defaultProps.getProperty("ZIPURL");
+
+
             in.close();
         } catch (IOException e) {
             System.out.println("settings.env file not found");
@@ -114,7 +125,7 @@ public class TranSMSServ {
     }
 
     static private void handleMessages() {
-        Date whenInvoked=new Date(); // NOW s
+        Date whenInvoked = new Date(); // NOW s
         ArrayList<Message> allMessages;
         if (!voice.isLoggedIn()) {
             try {
@@ -177,15 +188,15 @@ public class TranSMSServ {
     private static void parseMessagesFromThread(ArrayList<Message> newMessages, Collection<SMS> messages) {
         for (SMS message : messages) {
             //check if newer than last datastamp
-                if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
+            if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
 
-                    smsLogger.info(message.toString());
+                smsLogger.info(message.toString());
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
                 Matcher matchCommand = patCommand.matcher(message.getContent());
                 if (matchReg.find()) {
-                //If normal message (prefixed with a zip)
+                    //If normal message (prefixed with a zip)
 
-                    generateResponse(message,newMessages,matchReg);
+                    generateResponse(message, newMessages, matchReg);
                 }
                 //If command
 
@@ -209,24 +220,135 @@ public class TranSMSServ {
         }
     }
 
-    private static void generateResponse(SMS in_message,ArrayList<Message> outgoing, Matcher matchReg) {
-     //Make API call and build response with relevant data.
-        String requestURL = APIURL + "?";
-        if(matchReg.group(1) !=null) {
-           String zip = matchReg.group(1);
-            requestURL = requestURL + zip;
+    private static void generateResponse(SMS in_message, ArrayList<Message> outgoing, Matcher matchReg) {
+        //Make API call and build response with relevant data.
+        Boolean zipOnly = true;
+        int id = -1;
+        String requestURL = APIURL;
+        String responseText = "";
+        String GETargs = "?";
+        if (matchReg.group(1) != null) {
+            String zip = matchReg.group(1);
+            GETargs = GETargs + "zip_code=" + zip + "&";
         }
-        if(matchReg.group(3) !=null){
+        if (matchReg.group(3) != null) {
+            zipOnly = false;
             String category = matchReg.group(3);
-            requestURL = requestURL + category;
+            GETargs = GETargs + "category" + "&";
         }
-        if(matchReg.group(5) !=null){
-            String id = matchReg.group(5);
-            requestURL = requestURL + id;
+        if (matchReg.group(5) != null) {
+            id = Integer.parseInt(matchReg.group(5));
+        }
+        try {
+            if (zipOnly) {
+                requestURL = requestURL + ZIPURL;
+            } else {
+                requestURL = requestURL + CATURL;
+            }
+
+            URL url = new URL(requestURL + GETargs);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", ACCEPTHEADER);
+
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+            }
+            // Retrieving byte stream object from URL source
+            InputStream is = conn.getInputStream();
+
+            // Creating JSON object model from stream
+            JSONObject jsonResponse = new JSONObject(InputStreamtoString(is));
+            if (zipOnly) {
+                responseText = parseCats(jsonResponse);
+            } else {
+                responseText = parseResources(jsonResponse, id);
+            }
+        } catch (Exception e) {
+            responseText = "We encountered trouble accessing our database.  Please try again" + e.toString();
         }
 
-     outgoing.add(new Message(in_message.getFrom().getNumber(),in_message.getFrom(), requestURL));
+        outgoing.add(new Message(in_message.getFrom().getNumber(), in_message.getFrom(), responseText));
     }
+
+    private static String parseCats(JSONObject jsonResponse) {
+        return jsonResponse.toString();
+    }
+
+    private static String parseResources(JSONObject jsonResponse, int id) {
+        try {
+            JSONArray resourceList = jsonResponse.getJSONArray("resources");
+            if (id != -1) { //build view for individual resource details
+                {JSONObject curResource = resourceList.getJSONObject(id);
+                StringBuilder sb = new StringBuilder();
+                sb.append(curResource.get("name"));
+                sb.append("  ");
+                sb.append(curResource.get("trans_friendliness_rating"));
+                sb.append("/5  ");
+                sb.append(curResource.get("street_address_1"));
+
+                    sb.append("  ");
+                    sb.append(curResource.get("street_address_2"));
+                    sb.append("  ");
+
+                    sb.append(curResource.get("city"));
+
+                    sb.append(",  ");
+
+                    sb.append(curResource.get("state"));
+                    sb.append("  ");
+                    sb.append(curResource.get("zip"));
+                    sb.append("  ");
+                    sb.append(curResource.get("phone"));
+                    sb.append("  ");
+                    sb.append(curResource.get("contact_name"));
+                    return sb.toString();
+                }
+            } else {  //view for nearby resource summary
+                StringBuilder sb = new StringBuilder();
+                for(int index=0;index<resourceList.length();index++)
+                {
+                    JSONObject curResource = resourceList.getJSONObject(index);
+                    sb.append(index);
+                    sb.append(". ");
+                    sb.append(curResource.get("name"));
+                    sb.append("  ");
+                    sb.append(curResource.get("trans_friendliness_rating"));
+                    sb.append("/5  ");
+                }
+                return sb.toString();
+            }
+
+        } catch (Exception e) {
+            smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
+
+            return "PARSE_ERROR ";
+        }
+
+    }
+
+    static private String InputStreamtoString(InputStream in) {
+        InputStreamReader is = new InputStreamReader(in);
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(is);
+        try {
+            String read = br.readLine();
+
+            while (read != null) {
+                //System.out.println(read);
+                sb.append(read);
+                read = br.readLine();
+
+            }
+
+            return sb.toString();
+        } catch (Exception e) {
+            return "";
+        }
+
+    }
+
 
     static private void commandProcess(Message e) {
         smsLogger.info(e.toString());
@@ -235,7 +357,7 @@ public class TranSMSServ {
         switch (e.command) {
             //0 arguments
             case COMMANDS:
-                resultText ="Commands are: "+
+                resultText = "Commands are: " +
                         "(you must specify X and Y if needed) " +
                         " HELP (gives a help text)\n" +
                         " LISTS(shows all lists)\n" +
@@ -253,7 +375,7 @@ public class TranSMSServ {
             default:
             case HELP:
                 resultText = "Welcome to TranSMS.  Msg a zipcode \"#####\" for categories in that area. "
-                      + "Msg a zip and category for a list of trans-friendly resources" ;
+                        + "Msg a zip and category for a list of trans-friendly resources";
         }
 
         Message resultMessage = new Message(e.from.getNumber(), e.from, resultText);
