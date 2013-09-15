@@ -1,8 +1,10 @@
-package SMSListerv;
+package TransSMSServ;
 
 import gvjava.org.json.JSONArray;
 import gvjava.org.json.JSONException;
 import gvjava.org.json.JSONObject;
+
+import java.util.logging.Logger;
 
 public class MessageParser {
     public static String zipHeader = "TranSMS: Categories Near You";
@@ -12,7 +14,7 @@ public class MessageParser {
     public static String resourceDetailHeader = "TranSMS: Resource Info";
     public static String resourceDetailFooter = "Text Zip and Cat to Go Back. Or, text HELP.";
 
-    public static String parseCats(JSONObject jsonResponse) {  //MEOW
+    public static String parseCats(JSONObject jsonResponse, Logger smsLogger) {  //MEOW
         //parses all the categories for a given zip code           MEOW
         try {
             JSONArray categorylist = jsonResponse.getJSONArray("categories");
@@ -28,13 +30,13 @@ public class MessageParser {
             sb.append(zipFooter);
             return sb.toString();
         } catch (Exception e) {
-            TranSMSServ.smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
+            smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
 
             return "PARSE_ERROR ";
         }
     }
 
-    public static String parseResources(JSONObject jsonResponse, int id, String category) {
+    public static String parseResources(JSONObject jsonResponse, int id, String category, Logger smsLogger) {
         try {
             JSONArray resourceList = jsonResponse.getJSONArray("resources");
             if (id != -1) { //build view for individual resource details
@@ -44,7 +46,7 @@ public class MessageParser {
             }
 
         } catch (Exception e) {
-            TranSMSServ.smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
+            smsLogger.severe("PARSE_ERROR " + e.toString() + jsonResponse.toString());
             return "PARSE_ERROR ";
         }
 

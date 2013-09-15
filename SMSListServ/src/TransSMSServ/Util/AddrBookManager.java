@@ -1,4 +1,4 @@
-package SMSListerv.Util;
+package TransSMSServ.Util;
 
 import java.io.*;
 import java.util.*;

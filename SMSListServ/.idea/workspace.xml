@@ -86,14 +86,10 @@
       <file leaf-file-name="TranSMSServ.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="190" column="20" selection-start="6764" selection-end="6806" vertical-scroll-proportion="0.5982906">
+            <state line="18" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.1572327">
               <folding>
                 <element signature="docComment;class#TranSMSServ#0" expanded="false" />
-                <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
-                <element signature="e#1933#1948#0" expanded="false" />
-                <element signature="method#init_properties#0;class#TranSMSServ#0" expanded="false" />
-                <element signature="method#handleMessages#0;class#TranSMSServ#0" expanded="false" />
-                <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
+                <element signature="e#1983#1998#0" expanded="false" />
                 <element signature="method#parseMessages#0;class#TranSMSServ#0" expanded="false" />
                 <element signature="method#generateResponse#0;class#TranSMSServ#0" expanded="false" />
                 <element signature="method#InputStreamToString#0;class#TranSMSServ#0" expanded="false" />
@@ -102,6 +98,15 @@
                 <element signature="method#generateSummary#0;class#TranSMSServ#0" expanded="false" />
                 <element signature="class#Command#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TransSMSServ/MessageParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="70" selection-start="2692" selection-end="2692" vertical-scroll-proportion="-10.066667">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -160,15 +165,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Matcher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/util/regex/Matcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="484" column="0" selection-start="16942" selection-end="16942" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SMS.class" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/google-voice-java-1.14-java6.jar!/com/techventus/server/voice/datatypes/records/SMS.class">
           <provider selected="true" editor-type-id="text-editor">
@@ -211,6 +207,7 @@
         <option value="$PROJECT_DIR$/src/Message.java" />
         <option value="$PROJECT_DIR$/src/URLBuilder.java" />
         <option value="$PROJECT_DIR$/src/TranSMSServ.java" />
+        <option value="$PROJECT_DIR$/src/TransSMSServ/MessageParser.java" />
       </list>
     </option>
   </component>
@@ -275,7 +272,7 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemId" value="TransSMSServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -285,7 +282,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemId" value="TransSMSServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -295,39 +292,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="json.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="json.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="json" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemId" value="TransSMSServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -341,7 +306,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemId" value="TransSMSServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -353,13 +318,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListerv" />
+              <option name="myItemId" value="TransSMSServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListServ" />
+              <option name="myItemId" value="TransSMSServ" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -371,11 +336,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMSListerv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Util" />
+              <option name="myItemId" value="META-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -399,9 +360,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="recentsLimit" value="5" />
@@ -452,7 +413,7 @@
       <method />
     </configuration>
     <configuration default="false" name="AddrBookTest" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="SMSListerv.Util.AddrBookTest" />
+      <option name="MAIN_CLASS_NAME" value="TransSMSServ.Util.AddrBookTest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -461,7 +422,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SMSListServ" />
+      <module name="TranSMSServ" />
       <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -542,15 +503,15 @@
     </configuration>
     <configuration default="false" name="TranSMSServ" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="TranSMSServ" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="TranSMS" />
+      <module name="TransSMSServ" />
       <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
@@ -612,12 +573,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23741935" sideWeight="0.3181818" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25905293" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25857142" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286908" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23741935" sideWeight="0.776738" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.94142854" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.058571428" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22454308" sideWeight="0.5971429" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40285715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29387188" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -684,11 +645,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/humanEnteredData.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="76" selection-start="347" selection-end="347" vertical-scroll-proportion="0.15848528" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/listServData.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="15" selection-start="89" selection-end="89" vertical-scroll-proportion="0.14025246" />
@@ -785,16 +741,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TransSMSServ/MessageParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="70" selection-start="2692" selection-end="2692" vertical-scroll-proportion="-10.066667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TranSMSServ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="20" selection-start="6764" selection-end="6806" vertical-scroll-proportion="0.5982906">
+        <state line="18" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.1572327">
           <folding>
             <element signature="docComment;class#TranSMSServ#0" expanded="false" />
-            <element signature="method#main#0;class#TranSMSServ#0" expanded="false" />
-            <element signature="e#1933#1948#0" expanded="false" />
-            <element signature="method#init_properties#0;class#TranSMSServ#0" expanded="false" />
-            <element signature="method#handleMessages#0;class#TranSMSServ#0" expanded="false" />
-            <element signature="method#SetNewDate#0;class#TranSMSServ#0" expanded="false" />
+            <element signature="e#1983#1998#0" expanded="false" />
             <element signature="method#parseMessages#0;class#TranSMSServ#0" expanded="false" />
             <element signature="method#generateResponse#0;class#TranSMSServ#0" expanded="false" />
             <element signature="method#InputStreamToString#0;class#TranSMSServ#0" expanded="false" />
@@ -860,7 +819,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>TranSMS</last-edited>
+          <last-edited>TranSMSServ</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

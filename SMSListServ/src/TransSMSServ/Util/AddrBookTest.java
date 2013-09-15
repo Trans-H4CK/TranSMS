@@ -1,4 +1,4 @@
-package SMSListerv.Util;
+package TransSMSServ.Util;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,4 +1,4 @@
-import SMSListerv.MessageParser;
+import TransSMSServ.MessageParser;
 import com.techventus.server.voice.Voice;
 import com.techventus.server.voice.datatypes.records.SMS;
 import com.techventus.server.voice.datatypes.records.SMSThread;
@@ -45,7 +45,7 @@ public class TranSMSServ {
     private static String introTxt = "Welcome to TranSMS! Text HELP for support, INFO for information, or your zip code to begin looking for resources. Brought to you by Trans*Resource US.";
     private static String helpTxt = "Text zip code for categories. Text zip plus category for resource list (94560 health). Text zip, category, resource number for full listing (94560 health 3).";
     private static String infoTxt = "TranSMS (c) 2013 Trans*Resource US. A Trans*H4CK Oakland project. More info at www.transresource.us.";
-
+    private static HashSet<String> seenMessages;
 
     public static void main(String[] arg) {
         //todo:refactor
@@ -54,6 +54,7 @@ public class TranSMSServ {
 
         if (init_properties()) return;  // returns true if init_properties failed
 
+        seenMessages = new HashSet();
         try {
             smsLogger.addHandler(new FileHandler("TransSMS.log"));
             smsLogger.info("TranSMSServ server Spinning Up");
@@ -161,9 +162,12 @@ public class TranSMSServ {
     }
 
     private static void SetNewDate(Date newDate) {
-        //correcting our date to 0 seconds
+        //correcting our date to -1 minute
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(newDate);
+        cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE) - 1);
 
-        lastCheckDate = newDate; //NOW
+        lastCheckDate = cal.getTime(); //NOW
 
         dateProps.setProperty("freshDate", lastCheckDate.toString());
         try {
@@ -188,7 +192,12 @@ public class TranSMSServ {
     private static void parseMessagesFromThread(ArrayList<Message> newMessages, Collection<SMS> messages) {
         for (SMS message : messages) {
             //check if newer than last datastamp
-                if (message.getDateTime().after(lastCheckDate) && !message.getFrom().getName().equals("Me")) {   //if so, process, generate the messages to be sent,  and add to our list
+                String MsgSummary = generateSummary(message);
+                Boolean alreadyProcessed = seenMessages.contains(MsgSummary);
+                seenMessages.add(MsgSummary);
+                Boolean recent = message.getDateTime().after(lastCheckDate);
+                Boolean fromMe = !message.getFrom().getName().equals("Me");
+                if (!alreadyProcessed && recent && fromMe) {   //if so, process, generate the messages to be sent,  and add to our list
 
                 smsLogger.info(message.toString());
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
@@ -245,9 +254,9 @@ public class TranSMSServ {
             // Creating JSON object model from stream
             JSONObject jsonResponse = new JSONObject(InputStreamToString(is));
             if (zipOnly) {
-                responseText = MessageParser.parseCats(jsonResponse);
+                responseText = MessageParser.parseCats(jsonResponse, null);
             } else {
-                responseText = MessageParser.parseResources(jsonResponse, id, category);
+                responseText = MessageParser.parseResources(jsonResponse, id, category, null);
             }
         } catch (Exception e) {
             responseText = "We encountered trouble accessing our database.  Please try again" + e.toString();
