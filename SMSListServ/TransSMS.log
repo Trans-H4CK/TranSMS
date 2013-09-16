@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2013-09-15T21:37:04</date>
-  <millis>1379306224860</millis>
+  <date>2013-09-15T21:44:32</date>
+  <millis>1379306672388</millis>
   <sequence>0</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
@@ -13,13 +13,13 @@
   <message>TranSMSServ server Spinning Up</message>
 </record>
 <record>
-  <date>2013-09-15T21:37:07</date>
-  <millis>1379306227753</millis>
+  <date>2013-09-15T21:44:35</date>
+  <millis>1379306675125</millis>
   <sequence>1</sequence>
   <logger>TransSMS</logger>
   <level>INFO</level>
   <class>TranSMSServ</class>
   <method>main</method>
   <thread>1</thread>
-  <message>SMS Checks scheduled to begin on Sun Sep 15 21:37:58 PDT 2013</message>
+  <message>SMS Checks scheduled to begin on Sun Sep 15 21:44:58 PDT 2013</message>
 </record>
