@@ -161,12 +161,10 @@ public class TranSMSServ {
     }
 
     private static void SetNewDate(Date newDate) {
-        //correcting our date to -1 minute
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(newDate);
-        cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE) - 1);
+        //correcting our date to -1 minute                                                   s
 
-        lastCheckDate = cal.getTime(); //NOW
+
+        lastCheckDate = newDate; //NOW
 
         dateProps.setProperty("freshDate", lastCheckDate.toString());
         try {
@@ -195,8 +193,8 @@ public class TranSMSServ {
                 Boolean alreadyProcessed = seenMessages.contains(MsgSummary);
                 seenMessages.add(MsgSummary);
                 Boolean recent = message.getDateTime().after(lastCheckDate);
-                Boolean fromMe = !message.getFrom().getName().equals("Me");
-                if (!alreadyProcessed && recent && fromMe) {   //if so, process, generate the messages to be sent,  and add to our list
+                Boolean fromMe = message.getFrom().getName().equals("Me");
+                if (!alreadyProcessed && recent && !fromMe) {   //if so, process, generate the messages to be sent,  and add to our list
 
                 smsLogger.info(message.toString());
                 Matcher matchReg = patRegMessage.matcher(message.getContent());
@@ -258,7 +256,7 @@ public class TranSMSServ {
                 responseText = MessageParser.parseResources(jsonResponse, id, category, smsLogger);
             }
         } catch (Exception e) {
-            responseText = "We encountered trouble accessing our database.  Please try again" + e.toString();
+            responseText = "We encountered trouble accessing our database.  Please try again " +finalURL + " " + e.toString();
         }
 
         outgoing.add(new Message(in_message.getFrom().getNumber(), in_message.getFrom(), responseText));
@@ -324,9 +322,9 @@ public class TranSMSServ {
     static private String generateSummary(SMS message)
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(message.getDateTime().toString());
-        sb.append(message.getFrom().getNumber());
-        sb.append(message.getContent());
+        sb.append(message.getDateTime().toString().trim());
+        sb.append(message.getFrom().getNumber().trim());
+        sb.append(message.getContent().trim());
         return sb.toString();
     }
 

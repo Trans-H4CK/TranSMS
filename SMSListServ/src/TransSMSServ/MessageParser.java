@@ -7,11 +7,11 @@ import gvjava.org.json.JSONObject;
 import java.util.logging.Logger;
 
 public class MessageParser {
-    private static final String zipHeader = "TranSMS: Categories Near You";
+    private static final String zipHeader = "TranSMS: Categories Near You: ";
     private static final String zipFooter = "Text Zip and Category for List. Or, text HELP.";
     private static final String resourceListHeader = "TranSMS: Resources in ";
     private static final String resourceListFooter = "Text Zip, Cat and Resource No. for Info. Or, text HELP.";
-    private static final String resourceDetailHeader = "TranSMS: Resource Info";
+    private static final String resourceDetailHeader = "TranSMS: Resource Info ";
     private static final String resourceDetailFooter = "Text Zip and Cat to Go Back. Or, text HELP.";
 
     public static String parseCats(JSONObject jsonResponse, Logger smsLogger) {  //MEOW
@@ -22,7 +22,9 @@ public class MessageParser {
             sb.append(zipHeader);
             for (int index = 0; index < categorylist.length(); index++) {
                 JSONObject curResource = categorylist.getJSONObject(index).getJSONObject("categories");
+                sb.append(" (");
                 sb.append(index + 1);
+                sb.append(") ");
                 sb.append(". ");
                 sb.append(curResource.get("name"));
                 sb.append("\n  ");
@@ -57,10 +59,12 @@ public class MessageParser {
 
         sb.append(resourceListHeader);
         sb.append(category);
+        sb.append(":\n ");
         for (int index = 0; index < resourceList.length(); index++) {
             JSONObject curResource = resourceList.getJSONObject(index).getJSONObject("properties");
+            sb.append(" (");
             sb.append(index + 1);
-            sb.append(". ");
+            sb.append("). ");
             sb.append(curResource.get("name"));
             sb.append("  ");
             sb.append(curResource.get("trans_friendliness_rating"));
@@ -74,7 +78,7 @@ public class MessageParser {
     }
 
     private static String parseResource(int id, JSONArray resourceList) throws JSONException {
-        JSONObject curResource = resourceList.getJSONObject(id).getJSONObject("properties");
+        JSONObject curResource = resourceList.getJSONObject(id - 1).getJSONObject("properties");
         StringBuilder sb = new StringBuilder();
         sb.append(resourceDetailHeader);
         sb.append(curResource.get("name"));

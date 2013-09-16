@@ -40,6 +40,8 @@ public class URLBuilder {
         if (matchReg.group(3) != null) {
             zipOnly = false;
             category = matchReg.group(3);
+            category = category.toLowerCase();
+            category = Character.toUpperCase(category.charAt(0)) + category.substring(1); //capitalize First letter
             GETargs = GETargs + "category=" + category + "&per_page=5&";
         }
         if (matchReg.group(5) != null) {
