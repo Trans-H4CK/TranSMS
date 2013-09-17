@@ -53,7 +53,7 @@ public class TranSMSServ {
 
         if (init_properties()) return;  // returns true if init_properties failed
 
-        seenMessages = new HashSet<>();
+        seenMessages = new HashSet<String>();
         try {
             smsLogger.addHandler(new FileHandler("TransSMS.log"));
             smsLogger.info("TranSMSServ server Spinning Up");
@@ -161,9 +161,6 @@ public class TranSMSServ {
     }
 
     private static void SetNewDate(Date newDate) {
-        //correcting our date to -1 minute                                                   s
-
-
         lastCheckDate = newDate; //NOW
 
         dateProps.setProperty("freshDate", lastCheckDate.toString());
